@@ -13,10 +13,14 @@ export default function PhoneCard() {
           <div className="text-xs text-muted-foreground">Dr. Marie Dupont</div>
         </div>
 
-        {/* video area */}
-        <div className="mx-3 mt-2 grid place-items-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 p-4">
-          <div className="h-40 w-28 rounded-lg bg-white shadow-md grid place-items-center">
-            <div className="h-20 w-20 rounded-full bg-gray-200" />
+        {/* video area - real image */}
+        <div className="mx-3 mt-2 grid place-items-center rounded-xl p-2">
+          <div className="h-72 w-full overflow-hidden rounded-lg bg-gray-100 shadow-md">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F7b35b5e408f146ff91cf64666489db16?format=webp&width=800"
+              alt="Téléconsultation"
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
 
