@@ -130,6 +130,42 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Nos services */}
+      <section className="container mx-auto py-10">
+        <h2 className="text-2xl font-semibold mb-6">Nos services</h2>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <a href="#" className="flex items-center justify-between rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md">
+            <div className="flex items-center gap-4">
+              <div className="h-10 w-10 rounded-full bg-pink-100 grid place-items-center">
+                <svg className="h-5 w-5 text-pink-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C9.243 2 7 4.243 7 7c0 2.757 2.243 5 5 5s5-2.243 5-5c0-2.757-2.243-5-5-5z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </div>
+              <div>
+                <div className="font-medium">Santé mentale</div>
+                <div className="text-sm text-muted-foreground">Médecins Généralistes, Psychiatres et Psychologues</div>
+              </div>
+            </div>
+            <div className="text-muted-foreground">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </div>
+          </a>
+
+          <a href="#" className="flex items-center justify-between rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md">
+            <div className="flex items-center gap-4">
+              <div className="h-10 w-10 rounded-full bg-emerald-100 grid place-items-center">
+                <svg className="h-5 w-5 text-emerald-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v6M5 7h14M8 22h8a2 2 0 002-2v-5H6v5a2 2 0 002 2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </div>
+              <div>
+                <div className="font-medium">Santé physique</div>
+                <div className="text-sm text-muted-foreground">Médecins Généralistes, Gynécologues, Pédiatres...</div>
+              </div>
+            </div>
+            <div className="text-muted-foreground">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </div>
+          </a>
+        </div>
+      </section>
+
       {/* Banner: santé mentale */}
       <section className="container mx-auto mb-12">
         <div className="rounded-2xl bg-gradient-to-r from-pink-100 to-pink-50 p-6 md:p-8">
