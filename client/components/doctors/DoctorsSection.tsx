@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 type Doctor = {
   id: string;
