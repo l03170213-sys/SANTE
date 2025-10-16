@@ -92,40 +92,40 @@ export default function Index() {
 
       {/* Trust / Stats strip */}
       <section className="container mx-auto -mt-6 md:-mt-10">
-        <div className="rounded-2xl bg-white p-4 shadow-sm">
-          <div className="grid grid-cols-1 divide-y md:grid-cols-4 md:divide-y-0 md:divide-x">
-            <div className="flex items-center justify-center gap-4 px-4 py-6">
-              <div className="text-lg font-semibold">2000</div>
-              <div className="text-sm text-muted-foreground">médecins inscrits à l'Ordre</div>
+        <div className="rounded-2xl bg-white p-2 shadow-sm">
+          <div className="grid grid-cols-1 divide-y md:grid-cols-4 md:divide-y-0 md:divide-x items-stretch">
+
+            <div className="flex flex-col items-start justify-center gap-2 px-6 py-6">
+              <div className="text-sm font-semibold">2000</div>
+              <div className="text-xs text-muted-foreground">médecins inscrits à l'Ordre</div>
             </div>
 
-            <div className="flex items-center justify-center gap-4 px-4 py-6">
-              <div className="text-lg font-semibold">7</div>
-              <div className="text-sm text-muted-foreground">millions de consultations</div>
+            <div className="flex flex-col items-start justify-center gap-2 px-6 py-6">
+              <div className="text-sm font-semibold">7</div>
+              <div className="text-xs text-muted-foreground">millions de consultations</div>
             </div>
 
-            <div className="flex items-center justify-center gap-4 px-4 py-6">
-              <div className="text-lg font-semibold">4.9</div>
-              <div className="text-sm text-muted-foreground flex items-center gap-2">
-                <span className="flex items-center gap-1 text-amber-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.843L19.335 24 12 19.897 4.665 24 6 15.591 0 9.748l8.332-1.73z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.843L19.335 24 12 19.897 4.665 24 6 15.591 0 9.748l8.332-1.73z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.843L19.335 24 12 19.897 4.665 24 6 15.591 0 9.748l8.332-1.73z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.843L19.335 24 12 19.897 4.665 24 6 15.591 0 9.748l8.332-1.73z"/></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.843L19.335 24 12 19.897 4.665 24 6 15.591 0 9.748l8.332-1.73z"/></svg>
-                </span>
-                <span>sur les stores</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center gap-4 px-4 py-6">
+            <div className="flex flex-col items-start justify-center gap-2 px-6 py-6">
               <div className="flex items-center gap-3">
-                <span className="inline-block h-6 w-8 overflow-hidden rounded-sm">
-                  <svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg" className="h-full w-full"><rect width="3" height="2" fill="#0055A4"/><rect y="0.67" width="3" height="0.66" fill="#FFFFFF"/><rect y="1.33" width="3" height="0.66" fill="#EF4135"/></svg>
-                </span>
-                <div className="text-sm text-muted-foreground">Société de téléconsultation agréée par le Ministère de la Santé</div>
+                <div className="text-sm font-semibold">4.9</div>
+                <div className="flex items-center text-amber-500">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.843L19.335 24 12 19.897 4.665 24 6 15.591 0 9.748l8.332-1.73z"/></svg>
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.843L19.335 24 12 19.897 4.665 24 6 15.591 0 9.748l8.332-1.73z"/></svg>
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.843L19.335 24 12 19.897 4.665 24 6 15.591 0 9.748l8.332-1.73z"/></svg>
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.843L19.335 24 12 19.897 4.665 24 6 15.591 0 9.748l8.332-1.73z"/></svg>
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.843L19.335 24 12 19.897 4.665 24 6 15.591 0 9.748l8.332-1.73z"/></svg>
+                </div>
               </div>
+              <div className="text-xs text-muted-foreground">sur les stores</div>
             </div>
+
+            <div className="flex items-center gap-4 px-6 py-6">
+              <span className="inline-block h-6 w-8 overflow-hidden rounded-sm">
+                <svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg" className="h-full w-full"><rect width="3" height="2" fill="#0055A4"/><rect y="0.67" width="3" height="0.66" fill="#FFFFFF"/><rect y="1.33" width="3" height="0.66" fill="#EF4135"/></svg>
+              </span>
+              <div className="text-xs text-muted-foreground">Société de téléconsultation agréée par le Ministère de la Santé</div>
+            </div>
+
           </div>
         </div>
       </section>
