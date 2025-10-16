@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <div aria-hidden className="h-7 w-7 rounded-md bg-primary" />
-            <span className="font-semibold text-lg tracking-tight">Qare</span>
+            <span className="font-semibold text-lg tracking-tight">Toppatoo</span>
           </div>
           <p className="text-muted-foreground">Téléconsultation médicale sécurisée, 7j/7.</p>
         </div>
