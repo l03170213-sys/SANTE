@@ -18,28 +18,64 @@ const SPECIALTIES = [
   "Gynécologue et Sage‑femme",
 ];
 
-const FAKE_DOCTORS: Doctor[] = Array.from({ length: 9 }).map((_, i) => ({
-  id: String(i + 1),
-  name: [
-    "Dr BERANGERE BIROLINI",
-    "Dr ALEXIS ABI NASR",
-    "Dr Hakima BAHHOU NICOLAS",
-    "Dr Anne‑Sophie Maurel",
-    "Dr Paul Dupont",
-    "Dr Claire Martin",
-    "Dr Julien Petit",
-    "Dr Lea Moreau",
-    "Dr Karim Ben Ali",
-  ][i % 9],
-  specialty: SPECIALTIES[i % SPECIALTIES.length],
-  sector: "Secteur 1",
-  city: [
-    "CHAMBERY CEDEX (73011)",
-    "Saint‑Maur‑des‑Fossés (94210)",
-    "Lyon (69003)",
-  ][i % 3],
-  reimbursable: i % 2 === 0,
-}));
+const FIRST = [
+  "BERANGERE",
+  "ALEXIS",
+  "HAKIMA",
+  "ANNE",
+  "PAUL",
+  "CLAIRE",
+  "JULIEN",
+  "LEA",
+  "KARIM",
+  "SOPHIE",
+  "MARIE",
+  "LAURENT",
+  "EMMA",
+  "THOMAS",
+  "OLIVIER",
+];
+const LAST = [
+  "BIROLINI",
+  "ABI NASR",
+  "BAHHOU NICOLAS",
+  "MAUREL",
+  "DUPONT",
+  "MARTIN",
+  "PETIT",
+  "MOREAU",
+  "BEN ALI",
+  "LEROUX",
+  "ROBERT",
+  "GARNIER",
+  "FAURE",
+  "DURAND",
+  "LEFEBVRE",
+];
+const CITIES = [
+  "CHAMBERY CEDEX (73011)",
+  "Saint‑Maur‑des‑Fossés (94210)",
+  "Lyon (69003)",
+  "Paris (75002)",
+  "Marseille (13001)",
+];
+
+// Generate 10 doctors per specialty
+const FAKE_DOCTORS: Doctor[] = SPECIALTIES.flatMap((spec, si) =>
+  Array.from({ length: 10 }).map((_, ri) => {
+    const idx = si * 10 + ri;
+    const first = FIRST[idx % FIRST.length];
+    const last = LAST[idx % LAST.length];
+    return {
+      id: `${si + 1}-${ri + 1}`,
+      name: `Dr ${first} ${last}`,
+      specialty: spec,
+      sector: "Secteur 1",
+      city: CITIES[idx % CITIES.length],
+      reimbursable: ri % 2 === 0,
+    };
+  }),
+);
 
 export default function DoctorsSection() {
   const [active, setActive] = useState<string>(SPECIALTIES[0]);
