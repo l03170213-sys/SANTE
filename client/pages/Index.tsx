@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check, Video, CalendarDays, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
-import PhoneCard from "@/components/ui/PhoneCard";
 import DoctorsSection from "@/components/doctors/DoctorsSection";
 
 
@@ -75,10 +74,13 @@ export default function Index() {
                 />
               </div>
 
-              {/* Front phone */}
-              {/* Front phone: extracted component */}
-              <div className="relative z-10 mx-auto">
-                <PhoneCard />
+              {/* Front phone image only (removed card wrapper) */}
+              <div className="relative z-10 mx-auto rounded-3xl shadow-2xl overflow-hidden" style={{ width: 260, height: 460 }}>
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F1380e7284ab3460a9b906f21b0e632e9?format=webp&width=800"
+                  alt="Téléconsultation"
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
           </div>
