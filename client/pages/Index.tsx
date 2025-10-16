@@ -73,22 +73,12 @@ export default function Index() {
           <div className="flex items-center justify-center">
             <div className="relative w-[320px] md:w-[420px]">
               {/* Back phone */}
-              <div className="absolute -right-6 top-6 z-0 -rotate-6 rounded-3xl border bg-white p-4 shadow-lg md:-right-10 md:top-10 md:p-6" style={{width: '220px', height: '420px'}}>
-                <div className="h-full w-full overflow-hidden rounded-2xl bg-gray-50 p-4">
-                  <div className="h-3 w-12 rounded-full bg-gray-200 mb-3" />
-                  <div className="space-y-3">
-                    {[1,2,3,4,5].map((i)=> (
-                      <div key={i} className="flex items-center justify-between gap-3">
-                        <div className="h-10 w-10 rounded-md bg-primary/5" />
-                        <div className="flex-1">
-                          <div className="h-3 w-3/4 rounded bg-gray-200" />
-                          <div className="mt-2 h-3 w-1/2 rounded bg-gray-100" />
-                        </div>
-                        <div className="h-6 w-6 rounded bg-primary/10" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div className="absolute -right-6 top-6 z-0 -rotate-6 rounded-3xl border bg-white p-0 shadow-lg md:-right-10 md:top-10 md:p-0" style={{width: '220px', height: '420px'}}>
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F527af95511af480fa3430463301b5250?format=webp&width=800"
+                  alt="Disponibilités"
+                  className="h-full w-full rounded-3xl object-cover"
+                />
               </div>
 
               {/* Front phone */}
