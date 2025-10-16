@@ -178,12 +178,3 @@ export default function Index() {
     </div>
   );
 }
-
-function StatCard({ number, label }: { number: string; label: string }) {
-  return (
-    <div className="rounded-lg border bg-white px-4 py-3 shadow-sm">
-      <div className="text-lg font-semibold">{number}</div>
-      <div className="text-xs text-muted-foreground mt-1">{label}</div>
-    </div>
-  );
-}
