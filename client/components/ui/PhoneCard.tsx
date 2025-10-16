@@ -17,7 +17,7 @@ export default function PhoneCard() {
         <div className="mx-3 mt-2 grid place-items-center rounded-xl p-2">
           <div className="h-72 w-full overflow-hidden rounded-lg bg-gray-100 shadow-md">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F7b35b5e408f146ff91cf64666489db16?format=webp&width=800"
+              src="https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F1380e7284ab3460a9b906f21b0e632e9?format=webp&width=800"
               alt="Téléconsultation"
               className="h-full w-full object-cover"
             />
