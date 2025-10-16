@@ -89,8 +89,8 @@ const FAKE_DOCTORS: Doctor[] = SPECIALTIES.flatMap((spec, si) =>
 );
 
 export default function DoctorsSection() {
+  const navigate = useNavigate();
   const [active, setActive] = useState<string>(SPECIALTIES[0]);
-  const [selected, setSelected] = useState<Doctor | null>(null);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
 
   const doctors = useMemo(
@@ -103,6 +103,10 @@ export default function DoctorsSection() {
     if (!el) return;
     const offset = el.clientWidth * 0.7;
     el.scrollBy({ left: dir === "left" ? -offset : offset, behavior: "smooth" });
+  };
+
+  const goToDoctor = (d: Doctor) => {
+    navigate(`/praticien/${d.id}`, { state: { doctor: d } });
   };
 
   return (
