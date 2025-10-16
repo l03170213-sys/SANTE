@@ -176,6 +176,10 @@ export default function Index() {
           </a>
         </div>
       </section>
+
+      {/* Doctors availability section */}
+      <DoctorsSection />
+
     </div>
   );
 }
