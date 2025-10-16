@@ -74,7 +74,7 @@ export default function Index() {
               {/* Back phone */}
               <div className="absolute -right-6 top-6 z-0 -rotate-6 rounded-3xl border bg-white p-0 shadow-lg md:-right-10 md:top-10 md:p-0" style={{width: '220px', height: '420px'}}>
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F527af95511af480fa3430463301b5250?format=webp&width=800"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F4844691e2b37474981b9d09d2b925079?format=webp&width=800"
                   alt="Disponibilités"
                   className="h-full w-full rounded-3xl object-cover"
                 />
