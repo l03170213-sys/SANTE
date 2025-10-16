@@ -142,7 +142,16 @@ export default function DoctorsSection() {
           {doctors.map((d) => (
             <article
               key={d.id}
-              className="min-w-[280px] max-w-[320px] flex-shrink-0 rounded-2xl border bg-white p-5 shadow-sm"
+              onClick={() => setSelected(d)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelected(d);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              className="min-w-[280px] max-w-[320px] flex-shrink-0 rounded-2xl border bg-white p-5 shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
             >
               <div className="flex items-start gap-3">
                 <div className="h-10 w-10 rounded-full bg-gray-100 grid place-items-center text-sm font-semibold">{d.name.split(" ")[1]?.slice(0,2) ?? "DR"}</div>
@@ -162,16 +171,6 @@ export default function DoctorsSection() {
                   <div className="text-muted-foreground">Ville</div>
                   <div className="font-medium text-sm">{d.city}</div>
                 </div>
-              </div>
-
-              <div className="mt-4 flex items-center justify-between">
-                <button
-                  onClick={() => setSelected(d)}
-                  className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground"
-                >
-                  Voir disponibilités
-                </button>
-                <button className="text-muted-foreground text-sm">Réserver</button>
               </div>
             </article>
           ))}
