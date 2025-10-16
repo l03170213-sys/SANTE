@@ -147,11 +147,11 @@ export default function DoctorsSection() {
           {doctors.map((d) => (
             <article
               key={d.id}
-              onClick={() => setSelected(d)}
+              onClick={() => goToDoctor(d)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  setSelected(d);
+                  goToDoctor(d);
                 }
               }}
               role="button"
