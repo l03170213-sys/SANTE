@@ -14,16 +14,16 @@ export default function Footer() {
         <div>
           <h3 className="font-medium mb-3">Patients</h3>
           <ul className="space-y-2 text-muted-foreground">
-            <li><Link to="/consulter" className="hover:text-foreground">Prendre rendez-vous</Link></li>
-            <li><Link to="/specialites" className="hover:text-foreground">Spécialités</Link></li>
-            <li><Link to="/tarifs" className="hover:text-foreground">Tarifs</Link></li>
+            <li><Link to="/contact" className="hover:text-foreground">Contact</Link></li>
+            <li><Link to="/faq" className="hover:text-foreground">FAQ</Link></li>
+            <li><Link to="/a-propos" className="hover:text-foreground">À propos</Link></li>
           </ul>
         </div>
         <div>
           <h3 className="font-medium mb-3">Professionnels</h3>
           <ul className="space-y-2 text-muted-foreground">
-            <li><Link to="/inscription" className="hover:text-foreground">Rejoindre Qare</Link></li>
-            <li><Link to="/aide" className="hover:text-foreground">Centre d'aide</Link></li>
+            <li><Link to="/inscription" className="hover:text-foreground">Devenir partenaire</Link></li>
+            <li><Link to="/ressources" className="hover:text-foreground">Ressources</Link></li>
           </ul>
         </div>
         <div>
