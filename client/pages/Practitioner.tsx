@@ -8,7 +8,19 @@ const BACK_IMG = "https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a198
 export default function Practitioner() {
   const { id } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const doctor = (location.state as any)?.doctor ?? { name: "Dr Inconnu", specialty: "Médecin généraliste", city: "Dakar" };
+
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+
+  const handleTimeClick = (t: string) => {
+    setSelectedTime((s) => (s === t ? null : t));
+  };
+
+  const handleBook = () => {
+    // navigate to booking/checkout page with selected time
+    navigate("/booking", { state: { doctor, time: selectedTime, price: "6000 FCFA" } });
+  };
 
   return (
     <div className="container mx-auto py-12">
@@ -49,7 +61,9 @@ export default function Practitioner() {
                 <div className="text-sm font-medium">Dimanche 31 Jan. 2021</div>
                 <div className="mt-3 grid grid-cols-3 gap-3">
                   {['12:30','13:00','14:30','15:00','16:30','17:00'].map((t)=> (
-                    <button key={t} className="rounded-md bg-white px-3 py-2 text-sm border">{t}</button>
+                    <button key={t} onClick={() => handleTimeClick(t)} className={`rounded-md px-3 py-2 text-sm border ${selectedTime===t? 'bg-primary text-primary-foreground':'bg-white'}`}>
+                      {t}
+                    </button>
                   ))}
                 </div>
               </div>
@@ -58,14 +72,18 @@ export default function Practitioner() {
                 <div className="text-sm font-medium">Lundi 1 fév. 2021</div>
                 <div className="mt-3 grid grid-cols-3 gap-3">
                   {['09:00','09:30','10:00','10:30','11:00','11:30'].map((t)=> (
-                    <button key={t} className="rounded-md bg-white px-3 py-2 text-sm border">{t}</button>
+                    <button key={t} onClick={() => handleTimeClick(t)} className={`rounded-md px-3 py-2 text-sm border ${selectedTime===t? 'bg-primary text-primary-foreground':'bg-white'}`}>
+                      {t}
+                    </button>
                   ))}
                 </div>
               </div>
             </div>
 
             <div className="mt-6 text-right">
-              <button className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">Prendre rendez‑vous</button>
+              <button onClick={handleBook} disabled={!selectedTime} className={`rounded-md px-4 py-2 text-sm ${selectedTime? 'bg-primary text-primary-foreground':'bg-gray-200 text-gray-500'}`}>
+                Prendre rendez‑vous
+              </button>
             </div>
           </div>
 
