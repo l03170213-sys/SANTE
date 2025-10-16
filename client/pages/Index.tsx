@@ -1,173 +1,97 @@
 import { Button } from "@/components/ui/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Search, Video, CalendarDays, ShieldCheck, Stethoscope } from "lucide-react";
+import { Check, Video, CalendarDays, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+
+const HERO_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F0faa616b2cf24f4bb758315a0c5b094c?format=webp&width=1200";
 
 export default function Index() {
   return (
     <div className="bg-white">
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute -right-32 -top-24 h-80 w-80 rounded-full bg-accent blur-3xl" aria-hidden />
-        <div className="container mx-auto grid gap-10 py-16 md:grid-cols-2 md:gap-12 md:py-24">
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-medium text-foreground">
-              <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-              Remboursé selon conditions
-            </div>
-            <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
-              Consultez un médecin en vidéo, 7j/7
+      {/* Hero section under header */}
+      <section className="container mx-auto py-12 md:py-20">
+        <div className="grid items-center gap-8 md:grid-cols-2">
+          {/* Left column: headline + bullets + CTA */}
+          <div>
+            <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
+              Consultez en toute
+              <br /> confiance un médecin
+              <br /> en ligne aujourd'hui
             </h1>
-            <p className="mt-4 max-w-prose text-muted-foreground md:text-lg">
-              Prenez rendez-vous en quelques clics avec un médecin généraliste ou un spécialiste. Sans se déplacer, depuis votre mobile ou ordinateur.
+
+            <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
+              <li className="flex items-start gap-3">
+                <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                  <Check className="h-3 w-3" />
+                </span>
+                <div>
+                  <span className="font-medium text-foreground">Santé mentale et physique</span>
+                </div>
+              </li>
+
+              <li className="flex items-start gap-3">
+                <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                  <Check className="h-3 w-3" />
+                </span>
+                <div>Avec ou sans rendez-vous</div>
+              </li>
+
+              <li className="flex items-start gap-3">
+                <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                  <Check className="h-3 w-3" />
+                </span>
+                <div>~30 min d'attente moyenne</div>
+              </li>
+
+              <li className="flex items-start gap-3">
+                <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                  <Check className="h-3 w-3" />
+                </span>
+                <div>Consultation remboursable*</div>
+              </li>
+            </ul>
+
+            <div className="mt-6 flex items-center gap-4">
+              <Button size="lg">Consulter maintenant</Button>
+              <Link to="/inscription" className="text-sm text-muted-foreground underline">Découvrir</Link>
+            </div>
+
+            <p className="mt-6 max-w-lg text-xs text-muted-foreground">
+              *Selon votre situation et le praticien. Les frais non remboursables peuvent s'appliquer en
+              fonction des services choisis.
             </p>
 
-            <div className="mt-6 rounded-xl border bg-white p-2 shadow-sm">
-              <div className="flex flex-col gap-2 md:flex-row">
-                <div className="flex-1 rounded-lg border bg-white px-3 py-2">
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Stethoscope className="h-4 w-4" />
-                    <input
-                      aria-label="Spécialité ou médecin"
-                      placeholder="Spécialité ou médecin"
-                      className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-                    />
-                  </div>
-                </div>
-                <div className="flex-1 rounded-lg border bg-white px-3 py-2">
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Search className="h-4 w-4" />
-                    <input
-                      aria-label="Ville ou code postal"
-                      placeholder="Ville ou code postal"
-                      className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-                    />
-                  </div>
-                </div>
-                <Button size="lg" className="md:px-10">
-                  Rechercher
-                </Button>
-              </div>
-              <div className="mt-2 px-1 text-xs text-muted-foreground">
-                <Link to="/consulter" className="text-primary underline">Voir les médecins disponibles maintenant</Link>
-              </div>
-            </div>
-
-            <div className="mt-6 flex items-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Video className="h-4 w-4 text-primary" />
-                Téléconsultation sécurisée
-              </div>
-              <div className="flex items-center gap-2">
-                <CalendarDays className="h-4 w-4 text-primary" />
-                Rendez-vous en quelques minutes
-              </div>
+            {/* Stats row */}
+            <div className="mt-8 grid grid-cols-2 gap-3 md:flex md:items-center md:gap-6">
+              <StatCard number="2000" label="médecins inscrits à l'Ordre" />
+              <StatCard number="7" label="millions de consultations" />
+              <div className="hidden md:block md:flex-1" />
             </div>
           </div>
 
-          <div className="relative z-0">
-            <div className="relative mx-auto max-w-md rounded-2xl border bg-white p-6 shadow-xl md:max-w-none">
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 via-accent to-primary/10">
-                <div className="h-full w-full grid place-items-center">
-                  <div className="rounded-full bg-white p-4 shadow-md">
-                    <Video className="h-10 w-10 text-primary" />
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 space-y-1">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium">Téléconsultation avec un médecin</p>
-                  <span className="text-xs text-muted-foreground">~15 min</span>
-                </div>
-                <p className="text-xs text-muted-foreground">Depuis votre domicile, sans déplacement</p>
-              </div>
+          {/* Right column: image mockup */}
+          <div className="flex items-center justify-center">
+            <div className="relative w-[320px] md:w-[420px]">
+              <img
+                src={HERO_IMAGE}
+                alt="Aperçu téléconsultation"
+                className="z-10 rounded-2xl shadow-2xl"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Confiance */}
-      <section className="border-y bg-secondary">
-        <div className="container mx-auto flex flex-wrap items-center justify-center gap-8 py-8 text-muted-foreground">
-          <span className="text-center text-sm">Plébiscité par des milliers de patients</span>
-          <div className="flex items-center gap-6 opacity-80">
-            <div className="h-6 w-24 rounded bg-foreground/10" />
-            <div className="h-6 w-24 rounded bg-foreground/10" />
-            <div className="h-6 w-24 rounded bg-foreground/10" />
-            <div className="h-6 w-24 rounded bg-foreground/10" />
-          </div>
-        </div>
-      </section>
-
-      {/* Étapes */}
-      <section className="container mx-auto py-16 md:py-24">
-        <h2 className="text-center text-2xl font-semibold tracking-tight md:text-3xl">
-          Comment ça marche ?
-        </h2>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          <StepCard index={1} title="Choisissez votre praticien" desc="Trouvez un généraliste ou un spécialiste disponible." />
-          <StepCard index={2} title="Prenez rendez-vous" desc="Sélectionnez un créneau et confirmez en ligne." />
-          <StepCard index={3} title="Consultez en vidéo" desc="Depuis votre téléphone ou ordinateur, en toute sécurité." />
-        </div>
-      </section>
-
-      {/* Spécialités */}
-      <section className="border-y bg-secondary">
-        <div className="container mx-auto py-16 md:py-24">
-          <h2 className="text-center text-2xl font-semibold tracking-tight md:text-3xl">
-            Spécialités populaires
-          </h2>
-          <div className="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
-            {[
-              "Généraliste",
-              "Pédiatre",
-              "Gynécologue",
-              "Dermatologue",
-              "Psychiatre",
-              "ORL",
-            ].map((s) => (
-              <Link
-                to="/specialites"
-                key={s}
-                className="group rounded-full border bg-white px-4 py-2 text-center text-sm font-medium hover:border-primary hover:text-primary"
-              >
-                {s}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="container mx-auto py-16 md:py-24">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="text-center text-2xl font-semibold tracking-tight md:text-3xl">
-            Questions fréquentes
-          </h2>
-          <Accordion type="single" collapsible className="mt-8">
-            <AccordionItem value="item-1">
-              <AccordionTrigger>La téléconsultation est-elle remboursée ?</AccordionTrigger>
-              <AccordionContent>
-                Selon votre situation et la spécialité, la téléconsultation peut être prise en charge. Renseignez-vous auprès de votre assurance.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>Quels équipements sont nécessaires ?</AccordionTrigger>
-              <AccordionContent>
-                Un smartphone ou un ordinateur avec une caméra, un micro et une connexion internet stable suffisent.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Comment obtenir une ordonnance ?</AccordionTrigger>
-              <AccordionContent>
-                À l'issue de la consultation, le médecin peut émettre une ordonnance numérique si nécessaire.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-          <div className="mt-10 text-center">
-            <Button asChild size="lg">
-              <Link to="/inscription">Créer mon compte</Link>
-            </Button>
+      {/* Banner: santé mentale */}
+      <section className="container mx-auto mb-12">
+        <div className="rounded-2xl bg-gradient-to-r from-pink-100 to-pink-50 p-6 md:p-8">
+          <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 className="text-lg font-semibold">Et si vous preniez soin de votre santé mentale ?</h3>
+              <p className="mt-2 text-sm text-muted-foreground">Des psy à votre écoute, même le soir et le week-end</p>
+            </div>
+            <div className="mt-3 flex items-center gap-3 md:mt-0">
+              <Button variant="outline">Découvrir Toppatoo Psy</Button>
+            </div>
           </div>
         </div>
       </section>
@@ -175,16 +99,11 @@ export default function Index() {
   );
 }
 
-function StepCard({ index, title, desc }: { index: number; title: string; desc: string }) {
+function StatCard({ number, label }: { number: string; label: string }) {
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm">
-      <div className="flex items-center gap-3">
-        <div className="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground font-semibold">
-          {index}
-        </div>
-        <p className="font-medium">{title}</p>
-      </div>
-      <p className="mt-3 text-sm text-muted-foreground">{desc}</p>
+    <div className="rounded-lg border bg-white px-4 py-3 shadow-sm">
+      <div className="text-lg font-semibold">{number}</div>
+      <div className="text-xs text-muted-foreground mt-1">{label}</div>
     </div>
   );
 }
