@@ -190,48 +190,6 @@ export default function DoctorsSection() {
         </button>
       </div>
 
-      {/* Modal / details */}
-      {selected && (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/40">
-          <div className="mx-4 max-w-2xl rounded-2xl bg-white p-6">
-            <div className="flex items-start justify-between">
-              <div>
-                <div className="text-lg font-semibold">{selected.name}</div>
-                <div className="text-sm text-muted-foreground">{selected.specialty}</div>
-              </div>
-              <button onClick={() => setSelected(null)} className="text-muted-foreground">Fermer</button>
-            </div>
-
-            <div className="mt-4 grid gap-3 md:grid-cols-2">
-              <div className="rounded-lg border p-4">
-                <div className="text-sm font-medium">Disponibilités</div>
-                <div className="mt-3 grid gap-2">
-                  {['Dimanche 31 Jan. 2021','Lundi 1 fév. 2021','Mardi 2 fév. 2021'].map((day)=> (
-                    <div key={day} className="rounded-md border p-3">
-                      <div className="text-sm font-medium">{day}</div>
-                      <div className="mt-2 grid grid-cols-4 gap-2">
-                        {['12:30','13:00','14:30','15:00','16:30','17:00'].slice(0,4).map(t=> (
-                          <button key={t} className="rounded-md bg-white px-2 py-1 text-xs border">{t}</button>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="rounded-lg border p-4">
-                <div className="text-sm font-medium">Informations</div>
-                <div className="mt-3 text-sm text-muted-foreground">
-                  Téléconsultation · {selected.sector} · {selected.city}
-                </div>
-                <div className="mt-4">
-                  <button className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">Prendre rendez‑vous</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
