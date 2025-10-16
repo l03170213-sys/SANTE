@@ -68,14 +68,64 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Right column: image mockup */}
+          {/* Right column: coded phone mockup */}
           <div className="flex items-center justify-center">
             <div className="relative w-[320px] md:w-[420px]">
-              <img
-                src={HERO_IMAGE}
-                alt="Aperçu téléconsultation"
-                className="z-10 rounded-2xl shadow-2xl"
-              />
+              {/* Back phone */}
+              <div className="absolute -right-6 top-6 z-0 -rotate-6 rounded-3xl border bg-white p-4 shadow-lg md:-right-10 md:top-10 md:p-6" style={{width: '220px', height: '420px'}}>
+                <div className="h-full w-full overflow-hidden rounded-2xl bg-gray-50 p-4">
+                  <div className="h-3 w-12 rounded-full bg-gray-200 mb-3" />
+                  <div className="space-y-3">
+                    {[1,2,3,4,5].map((i)=> (
+                      <div key={i} className="flex items-center justify-between gap-3">
+                        <div className="h-10 w-10 rounded-md bg-primary/5" />
+                        <div className="flex-1">
+                          <div className="h-3 w-3/4 rounded bg-gray-200" />
+                          <div className="mt-2 h-3 w-1/2 rounded bg-gray-100" />
+                        </div>
+                        <div className="h-6 w-6 rounded bg-primary/10" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Front phone */}
+              <div className="relative z-10 mx-auto rounded-3xl border bg-white p-4 shadow-2xl" style={{width: '260px', height: '460px'}}>
+                <div className="h-full w-full overflow-hidden rounded-2xl bg-white">
+                  {/* top bar */}
+                  <div className="flex items-center justify-between px-3 py-2">
+                    <div className="flex items-center gap-2">
+                      <div className="h-7 w-7 rounded-full bg-primary" />
+                      <div className="text-sm font-medium">Toppatoo</div>
+                    </div>
+                    <div className="text-xs text-muted-foreground">Dr. Marie Dupont</div>
+                  </div>
+
+                  {/* video area */}
+                  <div className="mx-3 mt-2 grid place-items-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 p-4">
+                    <div className="h-40 w-28 rounded-lg bg-white shadow-md grid place-items-center">
+                      <div className="h-20 w-20 rounded-full bg-gray-200" />
+                    </div>
+                  </div>
+
+                  {/* controls */}
+                  <div className="mt-4 flex items-center justify-around px-6">
+                    <div className="h-10 w-10 rounded-full bg-gray-100" />
+                    <div className="h-12 w-12 rounded-full bg-red-500" />
+                    <div className="h-10 w-10 rounded-full bg-gray-100" />
+                  </div>
+
+                  {/* details */}
+                  <div className="mt-4 px-4">
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm font-medium">Téléconsultation</div>
+                      <div className="text-xs text-muted-foreground">~15 min</div>
+                    </div>
+                    <div className="mt-2 text-xs text-muted-foreground">Depuis votre domicile, sans déplacement</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
