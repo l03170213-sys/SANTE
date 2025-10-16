@@ -53,11 +53,21 @@ const LAST = [
   "LEFEBVRE",
 ];
 const CITIES = [
-  "CHAMBERY CEDEX (73011)",
-  "Saint‑Maur‑des‑Fossés (94210)",
-  "Lyon (69003)",
-  "Paris (75002)",
-  "Marseille (13001)",
+  "Dakar",
+  "Pikine",
+  "Thiès",
+  "Saint‑Louis",
+  "Ziguinchor",
+  "Kaolack",
+  "Mbour",
+  "Tambacounda",
+  "Kolda",
+  "Diourbel",
+  "Rufisque",
+  "Louga",
+  "Fatick",
+  "Matam",
+  "Kédougou",
 ];
 
 // Generate 10 doctors per specialty
