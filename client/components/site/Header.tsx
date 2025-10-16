@@ -18,7 +18,7 @@ export default function Header() {
         <div className="container mx-auto flex h-20 items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
             <div aria-hidden className="h-9 w-9 rounded-full bg-primary ring-1 ring-primary/20" />
-            <span className="font-semibold text-lg tracking-tight">Qare</span>
+            <span className="font-semibold text-lg tracking-tight">Toppatoo</span>
           </Link>
 
           <form className="mx-auto w-full max-w-2xl">
