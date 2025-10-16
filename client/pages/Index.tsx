@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Check, Video, CalendarDays, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import PhoneCard from "@/components/ui/PhoneCard";
 
 const HERO_IMAGE = "https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F0faa616b2cf24f4bb758315a0c5b094c?format=webp&width=1200";
 
