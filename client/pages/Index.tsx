@@ -130,6 +130,22 @@ export default function Index() {
         </div>
       </section>
 
+
+      {/* Banner: santé mentale */}
+      <section className="container mx-auto mb-12">
+        <div className="rounded-2xl bg-gradient-to-r from-pink-100 to-pink-50 p-6 md:p-8">
+          <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 className="text-lg font-semibold">Et si vous preniez soin de votre santé mentale ?</h3>
+              <p className="mt-2 text-sm text-muted-foreground">Des psy à votre écoute, même le soir et le week-end</p>
+            </div>
+            <div className="mt-3 flex items-center gap-3 md:mt-0">
+              <Button variant="outline">Découvrir Toppatoo Psy</Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Nos services */}
       <section className="container mx-auto py-10">
         <h2 className="text-2xl font-semibold mb-6">Nos services</h2>
@@ -163,21 +179,6 @@ export default function Index() {
               <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
           </a>
-        </div>
-      </section>
-
-      {/* Banner: santé mentale */}
-      <section className="container mx-auto mb-12">
-        <div className="rounded-2xl bg-gradient-to-r from-pink-100 to-pink-50 p-6 md:p-8">
-          <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h3 className="text-lg font-semibold">Et si vous preniez soin de votre santé mentale ?</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Des psy à votre écoute, même le soir et le week-end</p>
-            </div>
-            <div className="mt-3 flex items-center gap-3 md:mt-0">
-              <Button variant="outline">Découvrir Toppatoo Psy</Button>
-            </div>
-          </div>
         </div>
       </section>
     </div>
