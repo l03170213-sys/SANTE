@@ -60,12 +60,6 @@ export default function Index() {
               fonction des services choisis.
             </p>
 
-            {/* Stats row */}
-            <div className="mt-8 grid grid-cols-2 gap-3 md:flex md:items-center md:gap-6">
-              <StatCard number="2000" label="médecins inscrits à l'Ordre" />
-              <StatCard number="7" label="millions de consultations" />
-              <div className="hidden md:block md:flex-1" />
-            </div>
           </div>
 
           {/* Right column: coded phone mockup */}
