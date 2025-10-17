@@ -2,9 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import React from "react";
+import { useLang } from "@/i18n/LanguageProvider";
 
 export default function Header() {
   const navigate = useNavigate();
+  const { lang, setLang, t } = useLang();
   return (
     <header className="w-full sticky top-0 z-50">
       {/* Top thin dark bar */}
