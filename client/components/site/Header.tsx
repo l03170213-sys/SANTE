@@ -43,13 +43,15 @@ export default function Header() {
 
   return (
     <header className="w-full sticky top-0 z-50">
-      {/* Top thin dark bar */}
-      <div className="bg-[#111111] text-white">
-        <div className="container mx-auto flex h-8 items-center justify-end gap-4 text-xs">
-          <NavLink to="/praticien-recrutement" className={() => (audience === 'practitioner' ? highlightClass : defaultClass)}>{t('you_are_practitioner')}</NavLink>
-          <NavLink to="/" className={() => (audience === 'patient' ? highlightClass : defaultClass)}>{t('you_are_patient')}</NavLink>
+      {/* Top thin dark bar (hidden when user is logged in) */}
+      {!user && (
+        <div className="bg-[#111111] text-white">
+          <div className="container mx-auto flex h-8 items-center justify-end gap-4 text-xs">
+            <NavLink to="/praticien-recrutement" className={() => (audience === 'practitioner' ? highlightClass : defaultClass)}>{t('you_are_practitioner')}</NavLink>
+            <NavLink to="/" className={() => (audience === 'patient' ? highlightClass : defaultClass)}>{t('you_are_patient')}</NavLink>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Main nav */}
       <div className="bg-white shadow-sm">
