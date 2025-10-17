@@ -7,6 +7,10 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const stateAudience = (location.state as any)?.audience;
+  const queryAudience = new URLSearchParams(location.search).get('audience');
+  const audience = stateAudience || queryAudience || 'patient';
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
