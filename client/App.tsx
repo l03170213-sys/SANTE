@@ -36,8 +36,8 @@ const App = () => (
               <Route path="/specialites" element={<Placeholder />} />
               <Route path="/tarifs" element={<Placeholder />} />
               <Route path="/aide" element={<Placeholder />} />
-              <Route path="/connexion" element={<Placeholder />} />
-              <Route path="/inscription" element={<Placeholder />} />
+              <Route path="/connexion" element={<Login />} />
+              <Route path="/inscription" element={<Signup />} />
               <Route path="/mentions-legales" element={<Placeholder />} />
               <Route path="/confidentialite" element={<Placeholder />} />
               <Route path="/cookies" element={<Placeholder />} />
