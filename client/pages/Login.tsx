@@ -36,6 +36,10 @@ export default function Login() {
           <div>
             <button type="submit" disabled={loading} className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">{loading? 'Chargement...' : 'Se connecter'}</button>
           </div>
+
+          <div className="flex items-center justify-between">
+            <Link to="/mot-de-passe-oublie" className="text-sm text-primary underline">Mot de passe oublié</Link>
+          </div>
         </form>
         <div className="mt-4 rounded-md bg-primary/5 p-4 text-sm text-center">
           Pas encore de compte ? <Link to="/inscription" className="text-primary underline font-medium">Créer un compte</Link>
