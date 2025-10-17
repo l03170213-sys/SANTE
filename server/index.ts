@@ -19,5 +19,14 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
 
+  // Admin API routes
+  try {
+    const adminRouter = require("./routes/admin").default;
+    app.use("/api/admin", adminRouter);
+  } catch (e) {
+    // ignore if not available
+    console.warn("Admin router not loaded", e);
+  }
+
   return app;
 }
