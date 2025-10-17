@@ -20,8 +20,8 @@ export default function Login() {
     if (error) {
       alert(error.message);
     } else {
-      if (audience === 'practitioner') navigate('/praticien');
-      else navigate('/');
+      // go to unified dashboard which renders role-specific view
+      navigate('/dashboard');
     }
   };
 
