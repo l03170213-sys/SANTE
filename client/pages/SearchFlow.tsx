@@ -38,59 +38,9 @@ export default function SearchFlow() {
 
   return (
     <div className="container mx-auto py-12">
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-        <aside className="col-span-1">
-          <div className="rounded-2xl border bg-white p-4 shadow-sm">
-            <ol className="space-y-4">
-              <li className="flex items-start gap-3">
-                <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground grid place-items-center">1</div>
-                <div>
-                  <div className="text-sm font-medium">Authentification</div>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="h-8 w-8 rounded-full border grid place-items-center">2</div>
-                <div>
-                  <div className="text-sm font-medium">Bénéficiaire</div>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="h-8 w-8 rounded-full border grid place-items-center">3</div>
-                <div>
-                  <div className="text-sm font-medium">Détails médicaux</div>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="h-8 w-8 rounded-full border grid place-items-center">4</div>
-                <div>
-                  <div className="text-sm font-medium">Tarification</div>
-                </div>
-              </li>
-            </ol>
-          </div>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-1">
+        <main>
 
-          <div className="mt-6 rounded-2xl border bg-white p-4 shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-gray-100 grid place-items-center text-sm font-semibold">DR</div>
-              <div>
-                <div className="text-sm font-semibold">Dr BERANGERE BIROLINI</div>
-                <div className="text-xs text-muted-foreground">Médecin généraliste</div>
-              </div>
-            </div>
-            <div className="mt-4 rounded-md border bg-gray-50 p-3 text-sm">
-              <div className="flex items-center justify-between">
-                <div>Tarif</div>
-                <div className="font-medium">6000 FCFA</div>
-              </div>
-              <div className="mt-2 flex items-center justify-between">
-                <div>Rendez-vous</div>
-                <div className="font-medium">17:00</div>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        <main className="col-span-2">
           <div className="mx-auto max-w-3xl rounded-2xl border bg-white p-6 shadow-sm">
             <div className="rounded-md bg-primary/10 p-4">
               <div className="text-sm font-medium">Sélectionnez 1 à 3 motifs en santé mentale ou physique</div>
