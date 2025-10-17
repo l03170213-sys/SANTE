@@ -12,7 +12,7 @@ export default function Header() {
       {/* Top thin dark bar */}
       <div className="bg-[#111111] text-white">
         <div className="container mx-auto flex h-8 items-center justify-end gap-4 text-xs">
-          <a href="#" className="hover:underline px-2">{t('you_are_practitioner')}</a>
+          <NavLink to="/praticien-recrutement" className={({ isActive }) => (isActive ? 'px-3 py-1 rounded-md bg-primary text-primary-foreground font-semibold shadow-md ring-1 ring-primary/30' : 'hover:underline px-2')}>{t('you_are_practitioner')}</NavLink>
           <NavLink to="/" className={({ isActive }) => (isActive ? 'px-3 py-1 rounded-md bg-primary text-primary-foreground font-semibold shadow-md ring-1 ring-primary/30' : 'hover:underline px-2')}>{t('you_are_patient')}</NavLink>
         </div>
       </div>
