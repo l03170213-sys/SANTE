@@ -16,6 +16,7 @@ import SelectAudience from "./pages/SelectAudience";
 import PractitionerRecruit from "./pages/PractitionerRecruit";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ResetPassword from "./pages/ResetPassword";
 import React, { Suspense, lazy } from 'react';
 const Admin = lazy(() => import('./pages/Admin'));
 import Layout from "@/components/site/Layout";
@@ -40,6 +41,7 @@ const App = () => (
               <Route path="/aide" element={<Placeholder />} />
               <Route path="/connexion" element={<Login />} />
               <Route path="/inscription" element={<Signup />} />
+              <Route path="/mot-de-passe-oublie" element={<ResetPassword />} />
               <Route path="/mentions-legales" element={<Placeholder />} />
               <Route path="/confidentialite" element={<Placeholder />} />
               <Route path="/cookies" element={<Placeholder />} />
