@@ -59,6 +59,7 @@ const App = () => (
                 <Route path="/search" element={<SearchFlow />} />
                 <Route path="/search/results" element={<SearchResults />} />
                 <Route path="/booking" element={<Booking />} />
+              <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
