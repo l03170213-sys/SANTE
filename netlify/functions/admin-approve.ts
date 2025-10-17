@@ -12,16 +12,22 @@ const APP_URL = process.env.APP_URL || "https://your-app.example.com";
 if (SENDGRID_API_KEY) sgMail.setApiKey(SENDGRID_API_KEY);
 
 const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE, {
-  auth: { persistSession: false }
+  auth: { persistSession: false },
 });
 
 const handler: Handler = async (event) => {
   try {
-    if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method not allowed" };
+    if (event.httpMethod !== "POST")
+      return { statusCode: 405, body: "Method not allowed" };
 
     // Verify secret header
-    const secretHeader = event.headers["x-admin-secret"] || event.headers["X-Admin-Secret"];
-    if (!process.env.ADMIN_FUNCTION_SECRET || !secretHeader || secretHeader !== process.env.ADMIN_FUNCTION_SECRET) {
+    const secretHeader =
+      event.headers["x-admin-secret"] || event.headers["X-Admin-Secret"];
+    if (
+      !process.env.ADMIN_FUNCTION_SECRET ||
+      !secretHeader ||
+      secretHeader !== process.env.ADMIN_FUNCTION_SECRET
+    ) {
       return { statusCode: 401, body: "Unauthorized" };
     }
 
@@ -42,12 +48,15 @@ const handler: Handler = async (event) => {
     const email = req.email;
 
     // Find auth user by email using admin REST endpoint
-    const usersRes = await fetch(`${SUPABASE_URL}/auth/v1/admin/users?email=eq.${encodeURIComponent(email)}`, {
-      headers: {
-        apikey: SUPABASE_SERVICE_ROLE,
-        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE}`,
+    const usersRes = await fetch(
+      `${SUPABASE_URL}/auth/v1/admin/users?email=eq.${encodeURIComponent(email)}`,
+      {
+        headers: {
+          apikey: SUPABASE_SERVICE_ROLE,
+          Authorization: `Bearer ${SUPABASE_SERVICE_ROLE}`,
+        },
       },
-    });
+    );
     const users = await usersRes.json();
     let user = users && users[0];
 
@@ -60,7 +69,11 @@ const handler: Handler = async (event) => {
           Authorization: `Bearer ${SUPABASE_SERVICE_ROLE}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: email, password: tempPassword || Math.random().toString(36).slice(-8), email_confirm: true }),
+        body: JSON.stringify({
+          email: email,
+          password: tempPassword || Math.random().toString(36).slice(-8),
+          email_confirm: true,
+        }),
       });
       user = await createRes.json();
     }
@@ -80,16 +93,25 @@ const handler: Handler = async (event) => {
     });
 
     // Upsert profile
-    const fullName = req.name || (req.email ? req.email.split('@')[0] : userId);
+    const fullName = req.name || (req.email ? req.email.split("@")[0] : userId);
     await supabaseAdmin
       .from("profiles")
-      .upsert({ id: userId, email, full_name: fullName, role: "practitioner", approved: true, must_change_password: true })
+      .upsert({
+        id: userId,
+        email,
+        full_name: fullName,
+        role: "practitioner",
+        approved: true,
+        must_change_password: true,
+      })
       .select();
 
     // Insert into practitioners
     await supabaseAdmin
       .from("practitioners")
-      .insert([{ id: userId, specialty: req.specialty || null, clinic_info: {} }])
+      .insert([
+        { id: userId, specialty: req.specialty || null, clinic_info: {} },
+      ])
       .select();
 
     // Mark request processed
@@ -116,7 +138,10 @@ const handler: Handler = async (event) => {
     return { statusCode: 200, body: JSON.stringify({ ok: true, userId }) };
   } catch (err: any) {
     console.error(err);
-    return { statusCode: 500, body: JSON.stringify({ error: err.message || err }) };
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: err.message || err }),
+    };
   }
 };
 

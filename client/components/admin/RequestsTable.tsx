@@ -1,8 +1,14 @@
-import React from 'react';
+import React from "react";
 
-export default function RequestsTable({ requests, loading, onApprove, onReject }: any) {
+export default function RequestsTable({
+  requests,
+  loading,
+  onApprove,
+  onReject,
+}: any) {
   if (loading) return <div>Chargement...</div>;
-  if (!requests || requests.length === 0) return <div>Aucune demande en attente</div>;
+  if (!requests || requests.length === 0)
+    return <div>Aucune demande en attente</div>;
 
   return (
     <table className="w-full table-auto border-collapse">
@@ -23,10 +29,22 @@ export default function RequestsTable({ requests, loading, onApprove, onReject }
             <td className="border p-2">{r.name}</td>
             <td className="border p-2">{r.email}</td>
             <td className="border p-2">{r.specialty}</td>
-            <td className="border p-2">{new Date(r.created_at).toLocaleString()}</td>
             <td className="border p-2">
-              <button className="mr-2 px-3 py-1 bg-green-600 text-white rounded" onClick={() => onApprove(r.id)}>Valider</button>
-              <button className="px-3 py-1 bg-red-600 text-white rounded" onClick={() => onReject(r.id)}>Rejeter</button>
+              {new Date(r.created_at).toLocaleString()}
+            </td>
+            <td className="border p-2">
+              <button
+                className="mr-2 px-3 py-1 bg-green-600 text-white rounded"
+                onClick={() => onApprove(r.id)}
+              >
+                Valider
+              </button>
+              <button
+                className="px-3 py-1 bg-red-600 text-white rounded"
+                onClick={() => onReject(r.id)}
+              >
+                Rejeter
+              </button>
             </td>
           </tr>
         ))}

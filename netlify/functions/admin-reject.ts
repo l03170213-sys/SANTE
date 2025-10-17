@@ -8,15 +8,23 @@ const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY!;
 const EMAIL_FROM = process.env.EMAIL_FROM!;
 
 if (SENDGRID_API_KEY) sgMail.setApiKey(SENDGRID_API_KEY);
-const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE, { auth: { persistSession: false } });
+const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE, {
+  auth: { persistSession: false },
+});
 
 const handler: Handler = async (event) => {
   try {
-    if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method not allowed" };
+    if (event.httpMethod !== "POST")
+      return { statusCode: 405, body: "Method not allowed" };
 
     // Verify secret header
-    const secretHeader = event.headers["x-admin-secret"] || event.headers["X-Admin-Secret"];
-    if (!process.env.ADMIN_FUNCTION_SECRET || !secretHeader || secretHeader !== process.env.ADMIN_FUNCTION_SECRET) {
+    const secretHeader =
+      event.headers["x-admin-secret"] || event.headers["X-Admin-Secret"];
+    if (
+      !process.env.ADMIN_FUNCTION_SECRET ||
+      !secretHeader ||
+      secretHeader !== process.env.ADMIN_FUNCTION_SECRET
+    ) {
       return { statusCode: 401, body: "Unauthorized" };
     }
 
@@ -24,25 +32,35 @@ const handler: Handler = async (event) => {
     const { requestId, reason } = body;
     if (!requestId) return { statusCode: 400, body: "requestId is required" };
 
-    const { data: reqRows } = await supabaseAdmin.from('practitioner_requests').select('*').eq('id', requestId).limit(1);
+    const { data: reqRows } = await supabaseAdmin
+      .from("practitioner_requests")
+      .select("*")
+      .eq("id", requestId)
+      .limit(1);
     const req = reqRows && reqRows[0];
-    if (!req) return { statusCode: 404, body: 'request not found' };
+    if (!req) return { statusCode: 404, body: "request not found" };
 
-    await supabaseAdmin.from('practitioner_requests').update({ processed: true, processed_reason: reason || null }).eq('id', requestId);
+    await supabaseAdmin
+      .from("practitioner_requests")
+      .update({ processed: true, processed_reason: reason || null })
+      .eq("id", requestId);
 
     if (SENDGRID_API_KEY) {
       await sgMail.send({
         to: req.email,
         from: EMAIL_FROM,
-        subject: 'Votre candidature praticien a été rejetée',
-        html: `<p>Bonjour ${req.name || ''},</p><p>Votre candidature a été rejetée. Raison : ${reason || 'non spécifiée'}.</p>`,
+        subject: "Votre candidature praticien a été rejetée",
+        html: `<p>Bonjour ${req.name || ""},</p><p>Votre candidature a été rejetée. Raison : ${reason || "non spécifiée"}.</p>`,
       });
     }
 
     return { statusCode: 200, body: JSON.stringify({ ok: true }) };
   } catch (err: any) {
     console.error(err);
-    return { statusCode: 500, body: JSON.stringify({ error: err.message || err }) };
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: err.message || err }),
+    };
   }
 };
 

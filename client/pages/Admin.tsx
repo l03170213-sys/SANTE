@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
-import RequestsTable from '../components/admin/RequestsTable';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
+import RequestsTable from "../components/admin/RequestsTable";
 
 export default function AdminPage() {
   const { user } = useAuth();
@@ -14,7 +14,7 @@ export default function AdminPage() {
 
   async function fetchRequests() {
     setLoading(true);
-    const res = await fetch('/.netlify/functions/list-practitioner-requests');
+    const res = await fetch("/.netlify/functions/list-practitioner-requests");
     const data = await res.json();
     setRequests(data || []);
     setLoading(false);
@@ -22,19 +22,20 @@ export default function AdminPage() {
 
   async function approve(requestId: number) {
     const tempPassword = Math.random().toString(36).slice(-8);
-    const res = await fetch('/.netlify/functions/admin-approve', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const res = await fetch("/.netlify/functions/admin-approve", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ requestId, tempPassword }),
     });
     const j = await res.json();
-    if (res.ok) fetchRequests(); else alert(j.error || JSON.stringify(j));
+    if (res.ok) fetchRequests();
+    else alert(j.error || JSON.stringify(j));
   }
 
   async function rejectRequest(requestId: number, reason?: string) {
-    const res = await fetch('/.netlify/functions/admin-reject', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const res = await fetch("/.netlify/functions/admin-reject", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ requestId, reason }),
     });
     if (res.ok) fetchRequests();
@@ -46,7 +47,12 @@ export default function AdminPage() {
     <div className="p-6">
       <h1 className="text-2xl font-bold">Tableau de bord Admin</h1>
       <p className="mb-4">Validez ou rejetez les demandes de praticiens</p>
-      <RequestsTable requests={requests} loading={loading} onApprove={approve} onReject={rejectRequest} />
+      <RequestsTable
+        requests={requests}
+        loading={loading}
+        onApprove={approve}
+        onReject={rejectRequest}
+      />
     </div>
   );
 }

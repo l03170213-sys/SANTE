@@ -18,11 +18,11 @@ import PractitionerRecruit from "./pages/PractitionerRecruit";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ResetPassword from "./pages/ResetPassword";
-import React, { Suspense, lazy } from 'react';
-const Admin = lazy(() => import('./pages/Admin'));
+import React, { Suspense, lazy } from "react";
+const Admin = lazy(() => import("./pages/Admin"));
 import Layout from "@/components/site/Layout";
-import AuthProvider from '@/components/AuthProvider';
-import ProtectedRoute from '@/components/ProtectedRoute';
+import AuthProvider from "@/components/AuthProvider";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import Placeholder from "@/pages/Placeholder";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 
@@ -45,7 +45,10 @@ const App = () => (
                 <Route path="/aide" element={<Placeholder />} />
                 <Route path="/connexion" element={<Login />} />
                 <Route path="/inscription" element={<Signup />} />
-                <Route path="/mot-de-passe-oublie" element={<ResetPassword />} />
+                <Route
+                  path="/mot-de-passe-oublie"
+                  element={<ResetPassword />}
+                />
                 <Route path="/mentions-legales" element={<Placeholder />} />
                 <Route path="/confidentialite" element={<Placeholder />} />
                 <Route path="/cookies" element={<Placeholder />} />
@@ -54,13 +57,38 @@ const App = () => (
                 <Route path="/a-propos" element={<Placeholder />} />
                 <Route path="/ressources" element={<Placeholder />} />
                 <Route path="/praticien/:id" element={<Practitioner />} />
-                <Route path="/praticien-recrutement" element={<PractitionerRecruit />} />
-                <Route path="/admin" element={<ProtectedRoute allowedRoles={["admin"]}><Suspense fallback={<div className="container mx-auto py-12">Chargement...</div>}><Admin /></Suspense></ProtectedRoute>} />
+                <Route
+                  path="/praticien-recrutement"
+                  element={<PractitionerRecruit />}
+                />
+                <Route
+                  path="/admin"
+                  element={
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                      <Suspense
+                        fallback={
+                          <div className="container mx-auto py-12">
+                            Chargement...
+                          </div>
+                        }
+                      >
+                        <Admin />
+                      </Suspense>
+                    </ProtectedRoute>
+                  }
+                />
                 <Route path="/search/audience" element={<SelectAudience />} />
                 <Route path="/search" element={<SearchFlow />} />
                 <Route path="/search/results" element={<SearchResults />} />
                 <Route path="/booking" element={<Booking />} />
-              <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                <Route
+                  path="/dashboard"
+                  element={
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  }
+                />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
