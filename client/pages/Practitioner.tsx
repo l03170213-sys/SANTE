@@ -1,7 +1,5 @@
-import { useLocation, useParams } from "react-router-dom";
-
 import React, { useState } from "react";
-import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 
 const FRONT_IMG = "https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F1380e7284ab3460a9b906f21b0e632e9?format=webp&width=800";
 const BACK_IMG = "https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F4844691e2b37474981b9d09d2b925079?format=webp&width=800";
