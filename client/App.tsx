@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Practitioner from "./pages/Practitioner";
 import Booking from "./pages/Booking";
+import Dashboard from "./pages/Dashboard";
 import SearchFlow from "./pages/SearchFlow";
 import SearchResults from "./pages/SearchResults";
 import SelectAudience from "./pages/SelectAudience";
