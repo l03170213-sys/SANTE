@@ -55,8 +55,8 @@ export default function Index() {
             </ul>
 
             <div className="mt-6 flex items-center gap-4">
-              <Button size="lg">Consulter maintenant</Button>
-              <Link to="/inscription" className="text-sm text-muted-foreground underline">Découvrir</Link>
+              <Button size="lg">{t('consultNow')}</Button>
+              <Link to="/inscription" className="text-sm text-muted-foreground underline">{t('discover')}</Link>
             </div>
 
             <p className="mt-6 max-w-lg text-xs text-muted-foreground">
