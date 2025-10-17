@@ -63,7 +63,6 @@ export default function Booking() {
         <main className="col-span-2">
           <div className="mx-auto max-w-xl rounded-2xl border bg-white p-8 shadow-sm">
             <div className="text-center">
-              <img src="https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F39b7d6fac4a540eaaa705cdeae94bd58?format=webp&width=200" alt="logo" className="mx-auto mb-4 h-10" />
               <h2 className="text-2xl font-semibold">Connectez-vous ou créez votre compte</h2>
               <p className="mt-2 text-sm text-muted-foreground">Renseignez votre email et mot de passe</p>
             </div>
