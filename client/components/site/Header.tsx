@@ -34,9 +34,14 @@ export default function Header() {
                 id="site-search"
                 placeholder="Rechercher un Généraliste, Psychiatre, Pédiatre..."
                 className="w-full rounded-full border border-input bg-white py-3 pl-10 pr-4 text-sm shadow-sm placeholder:text-muted-foreground"
+                onFocus={() => setOpen(true)}
+                onClick={() => setOpen(true)}
+                readOnly
               />
             </div>
           </form>
+          <SearchOverlay open={open} initialQuery={""} onClose={() => setOpen(false)}
+          />
 
           <div className="flex items-center gap-3">
             <Button variant="ghost" asChild>
