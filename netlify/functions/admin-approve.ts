@@ -18,6 +18,13 @@ const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE, {
 const handler: Handler = async (event) => {
   try {
     if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method not allowed" };
+
+    // Verify secret header
+    const secretHeader = event.headers["x-admin-secret"] || event.headers["X-Admin-Secret"];
+    if (!process.env.ADMIN_FUNCTION_SECRET || !secretHeader || secretHeader !== process.env.ADMIN_FUNCTION_SECRET) {
+      return { statusCode: 401, body: "Unauthorized" };
+    }
+
     const body = JSON.parse(event.body || "{}");
     const { requestId, tempPassword } = body;
     if (!requestId) return { statusCode: 400, body: "requestId is required" };
@@ -73,7 +80,7 @@ const handler: Handler = async (event) => {
     });
 
     // Upsert profile
-    const fullName = req.name || req.email.split('@')[0];
+    const fullName = req.name || (req.email ? req.email.split('@')[0] : userId);
     await supabaseAdmin
       .from("profiles")
       .upsert({ id: userId, email, full_name: fullName, role: "practitioner", approved: true, must_change_password: true })
