@@ -7,7 +7,12 @@ const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE, { auth: 
 
 const handler: Handler = async (event) => {
   try {
-    // Optional: check some secret header to ensure only admin UI calls this function
+    // Verify secret header
+    const secretHeader = event.headers["x-admin-secret"] || event.headers["X-Admin-Secret"];
+    if (!process.env.ADMIN_FUNCTION_SECRET || !secretHeader || secretHeader !== process.env.ADMIN_FUNCTION_SECRET) {
+      return { statusCode: 401, body: "Unauthorized" };
+    }
+
     const { data, error } = await supabaseAdmin.from('practitioner_requests').select('*').order('created_at', { ascending: false }).limit(200);
     if (error) throw error;
     return { statusCode: 200, body: JSON.stringify(data) };
