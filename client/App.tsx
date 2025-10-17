@@ -16,7 +16,8 @@ import SelectAudience from "./pages/SelectAudience";
 import PractitionerRecruit from "./pages/PractitionerRecruit";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Admin from "./pages/Admin";
+import React, { Suspense, lazy } from 'react';
+const Admin = lazy(() => import('./pages/Admin'));
 import Layout from "@/components/site/Layout";
 import Placeholder from "@/pages/Placeholder";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
@@ -48,7 +49,7 @@ const App = () => (
               <Route path="/ressources" element={<Placeholder />} />
               <Route path="/praticien/:id" element={<Practitioner />} />
               <Route path="/praticien-recrutement" element={<PractitionerRecruit />} />
-              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin" element={<Suspense fallback={<div className="container mx-auto py-12">Chargement...</div>}><Admin /></Suspense>} />
               <Route path="/search/audience" element={<SelectAudience />} />
               <Route path="/search" element={<SearchFlow />} />
               <Route path="/search/results" element={<SearchResults />} />
