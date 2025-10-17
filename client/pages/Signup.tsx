@@ -35,7 +35,7 @@ export default function Signup() {
             <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Mot de passe" className="w-full rounded-md border px-3 py-2" />
           </div>
           <div>
-            <button type="submit" disabled={loading} className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">{loading? 'Chargement...' : 'S'inscrire'}</button>
+            <button type="submit" disabled={loading} className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">{loading ? 'Chargement...' : "S'inscrire"}</button>
           </div>
         </form>
       </div>
