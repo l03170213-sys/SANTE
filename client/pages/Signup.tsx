@@ -49,7 +49,7 @@ export default function Signup() {
         await fetch('/api/profiles/create', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: user.id, email: user.email, full_name: fullName, phone, postal, birthdate, role: 'patient' }),
+          body: JSON.stringify({ id: user.id, email: user.email, full_name: `${firstName} ${lastName}`, phone, postal, birthdate, role: 'patient' }),
         });
       } else {
         await fetch('/api/profiles/create', {
