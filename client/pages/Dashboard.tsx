@@ -41,7 +41,16 @@ export default function Dashboard() {
           <div className="rounded-2xl border bg-white p-6 shadow-sm">
             <h2 className="text-lg font-medium">Prochains rendez‑vous</h2>
             <div className="mt-4 text-sm text-muted-foreground">Aucun rendez‑vous programmé pour l'instant.</div>
-            {/* TODO: hook up appointments list from DB */}
+            <ul className="mt-4 space-y-3">
+              {/* Example placeholder items (replace with real data from DB) */}
+              <li className="flex items-start justify-between rounded-md bg-gray-50 p-3">
+                <div>
+                  <div className="font-medium">Aucun rendez‑vous</div>
+                  <div className="text-xs text-muted-foreground">Tu n'as pas de rendez‑vous à venir.</div>
+                </div>
+                <div className="text-xs text-muted-foreground">—</div>
+              </li>
+            </ul>
           </div>
 
           {role === 'practitioner' && (
