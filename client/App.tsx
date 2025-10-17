@@ -15,6 +15,7 @@ import SearchResults from "./pages/SearchResults";
 import SelectAudience from "./pages/SelectAudience";
 import Layout from "@/components/site/Layout";
 import Placeholder from "@/pages/Placeholder";
+import { LanguageProvider } from "@/i18n/LanguageProvider";
 
 const queryClient = new QueryClient();
 
