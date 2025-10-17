@@ -11,6 +11,8 @@ const translations: Record<Lang, Record<string, string>> = {
     hero_line1: "Consultez en toute",
     hero_line2: "confiance un médecin",
     hero_line3: "en ligne aujourd'hui",
+    you_are_patient: "Vous êtes patient",
+    you_are_practitioner: "Vous êtes praticien",
   },
   wo: {
     // Visible Wolof placeholders (replace with accurate translations later)
