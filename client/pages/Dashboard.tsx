@@ -69,10 +69,10 @@ export default function Dashboard() {
         <aside className="col-span-1">
           <div className="rounded-2xl border bg-white p-6 shadow-sm">
             <div className="flex items-center gap-4">
-              <div className="h-14 w-14 rounded-full bg-gray-100 grid place-items-center text-xl font-semibold">{(profile?.full_name ?? user?.email ?? 'U').toString().charAt(0).toUpperCase()}</div>
+              <div className="h-14 w-14 rounded-full bg-gray-100 grid place-items-center text-xl font-semibold">{displayName.charAt(0).toUpperCase()}</div>
               <div>
-                <div className="font-medium">{profile?.full_name ?? user?.email}</div>
-                <div className="text-sm text-muted-foreground">{profile?.role ?? 'patient'}</div>
+                <div className="font-medium">{displayName}</div>
+                <div className="text-sm text-muted-foreground">{role}</div>
               </div>
             </div>
 
