@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import React from "react";
 import { useLang } from "@/i18n/LanguageProvider";
+import useAuth from '@/hooks/useAuth';
 
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const { lang, setLang, t } = useLang();
+  const { user, profile } = useAuth();
 
   // Determine current audience: prefer navigation state/query param, else infer from path
   const stateAudience = (location.state as any)?.audience;
@@ -17,6 +19,9 @@ export default function Header() {
 
   const highlightClass = 'px-3 py-1 rounded-md bg-primary text-primary-foreground font-semibold shadow-md ring-1 ring-primary/30';
   const defaultClass = 'hover:underline px-2';
+
+  const rawName = (profile?.full_name || user?.user_metadata?.full_name || user?.email || '').toString();
+  const displayName = rawName ? rawName.split(' ').map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ') : '';
 
   return (
     <header className="w-full sticky top-0 z-50">
@@ -63,9 +68,21 @@ export default function Header() {
               </button>
             </div>
 
-            <Button variant="ghost" asChild>
-              <button onClick={() => navigate('/connexion', { state: { audience } })} className="text-sm">{t('login')}</button>
-            </Button>
+            {user ? (
+              <div className="flex items-center gap-3">
+                <Link to="/dashboard" className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-gray-50">
+                  <div className="h-8 w-8 rounded-full bg-gray-100 grid place-items-center text-sm font-semibold">{displayName.charAt(0)?.toUpperCase()}</div>
+                  <div className="text-sm">
+                    <div className="font-medium">Bonjour, {displayName.split(' ')[0]}</div>
+                    <div className="text-xs text-muted-foreground">{profile?.role ?? 'Patient'}</div>
+                  </div>
+                </Link>
+              </div>
+            ) : (
+              <Button variant="ghost" asChild>
+                <button onClick={() => navigate('/connexion', { state: { audience } })} className="text-sm">{t('login')}</button>
+              </Button>
+            )}
           </div>
         </div>
       </div>
