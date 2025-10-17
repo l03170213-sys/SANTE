@@ -13,14 +13,16 @@ const translations: Record<Lang, Record<string, string>> = {
     hero_line3: "en ligne aujourd'hui",
   },
   wo: {
-    // Placeholder: provide same texts for now; replace with Wolof later.
-    login: "Connexion",
-    searchPlaceholder: "Rechercher un Généraliste, Psychiatre, Pédiatre...",
-    consultNow: "Consulter maintenant",
-    discover: "Découvrir",
-    hero_line1: "Consultez en toute",
-    hero_line2: "confiance un médecin",
-    hero_line3: "en ligne aujourd'hui",
+    // Visible Wolof placeholders (replace with accurate translations later)
+    login: "WO: Jàmm",
+    searchPlaceholder: "WO: Soppal xam-xam (Généraliste, Pédiatre...)",
+    consultNow: "WO: Jëkk ci njàng",
+    discover: "WO: Wone benn",
+    hero_line1: "WO: Ñëw ci jokkoo",
+    hero_line2: "WO: mën nañu jàngal say xalaat",
+    hero_line3: "WO: ci internet tey",
+    you_are_patient: "WO: Yow nit ku paciente",
+    you_are_practitioner: "WO: Yow nit ku praticien",
   },
 };
 
