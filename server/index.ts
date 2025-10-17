@@ -28,5 +28,13 @@ export function createServer() {
     console.warn("Admin router not loaded", e);
   }
 
+  // Profiles API (server-side profile creation/upsert using service role)
+  try {
+    const profilesRouter = require("./routes/profiles").default;
+    app.use("/api/profiles", profilesRouter);
+  } catch (e) {
+    console.warn("Profiles router not loaded", e);
+  }
+
   return app;
 }
