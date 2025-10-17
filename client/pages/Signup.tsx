@@ -18,6 +18,22 @@ export default function Signup() {
   // audience if present
   const audience = new URLSearchParams(location.search).get('audience') || 'patient';
 
+  if (audience === 'practitioner') {
+    return (
+      <div className="container mx-auto py-12">
+        <div className="mx-auto max-w-md">
+          <h2 className="text-2xl font-semibold mb-4">Candidature praticien</h2>
+          <div className="rounded-md bg-yellow-50 border-l-4 border-yellow-400 p-4 text-sm">
+            Les praticiens ne peuvent pas créer leur compte directement. Pour postuler, veuillez remplir le formulaire de recrutement.
+          </div>
+          <div className="mt-4">
+            <Link to="/praticien-recrutement" className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">Accéder au formulaire de recrutement</Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const next = () => setStep((s) => Math.min(3, s + 1));
   const prev = () => setStep((s) => Math.max(1, s - 1));
 
