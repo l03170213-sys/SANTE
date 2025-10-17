@@ -5,7 +5,10 @@ import DoctorsSection from "@/components/doctors/DoctorsSection";
 import CommitmentsAndHow from "@/components/home/CommitmentsAndHow";
 
 
+import { useLang } from "@/i18n/LanguageProvider";
+
 export default function Index() {
+  const { t } = useLang();
   return (
     <div className="bg-white">
       {/* Hero section under header */}
@@ -14,9 +17,9 @@ export default function Index() {
           {/* Left column: headline + bullets + CTA */}
           <div>
             <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
-              Consultez en toute
-              <br /> confiance un médecin
-              <br /> en ligne aujourd'hui
+              {t('hero_line1')}
+              <br /> {t('hero_line2')}
+              <br /> {t('hero_line3')}
             </h1>
 
             <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
