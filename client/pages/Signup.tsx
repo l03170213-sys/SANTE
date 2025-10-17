@@ -103,9 +103,15 @@ export default function Signup() {
 
           {step === 2 && (
             <div className="space-y-4">
-              <div>
-                <label className="text-sm font-medium">Nom complet</label>
-                <input value={fullName} onChange={(e)=>setFullName(e.target.value)} placeholder="Prénom Nom" className="w-full rounded-md border px-3 py-2" required />
+                  <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-sm font-medium">Prénom</label>
+                  <input value={firstName} onChange={(e)=>setFirstName(e.target.value)} placeholder="Prénom" className="w-full rounded-md border px-3 py-2" required />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Nom</label>
+                  <input value={lastName} onChange={(e)=>setLastName(e.target.value)} placeholder="Nom" className="w-full rounded-md border px-3 py-2" required />
+                </div>
               </div>
               <div>
                 <label className="text-sm font-medium">Téléphone</label>
