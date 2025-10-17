@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import Practitioner from "./pages/Practitioner";
 import Booking from "./pages/Booking";
 import SearchFlow from "./pages/SearchFlow";
+import SearchResults from "./pages/SearchResults";
 import Layout from "@/components/site/Layout";
 import Placeholder from "@/pages/Placeholder";
 
