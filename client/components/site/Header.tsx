@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import React, { useState } from "react";
+import SearchOverlay from "./SearchOverlay";
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
   return (
     <header className="w-full sticky top-0 z-50">
       {/* Top thin dark bar */}
