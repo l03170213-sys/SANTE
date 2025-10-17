@@ -78,13 +78,12 @@ export default function Index() {
                 />
               </div>
 
-              {/* Front phone image: show full image without cropping */}
-              <div className="relative z-10 mx-auto rounded-3xl shadow-2xl" style={{ width: 260 }}>
+              {/* Front phone image only (removed card wrapper) */}
+              <div className="relative z-10 mx-auto rounded-3xl shadow-2xl overflow-hidden" style={{ width: 260, height: 460 }}>
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F74b8ed97616b46c898962ad681a44893?format=webp&width=800"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fa55e2b675d8b4a19887bfba4c19f448e%2F1380e7284ab3460a9b906f21b0e632e9?format=webp&width=800"
                   alt="Téléconsultation"
-                  className="w-full h-auto object-contain"
-                  style={{ display: 'block' }}
+                  className="h-full w-full object-cover"
                 />
               </div>
             </div>
