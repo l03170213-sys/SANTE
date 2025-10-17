@@ -1,4 +1,4 @@
-import { Link, useNavigate, NavLink } from "react-router-dom";
+import { Link, useNavigate, NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import React from "react";
@@ -6,14 +6,25 @@ import { useLang } from "@/i18n/LanguageProvider";
 
 export default function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { lang, setLang, t } = useLang();
+
+  // Determine current audience: prefer navigation state/query param, else infer from path
+  const stateAudience = (location.state as any)?.audience;
+  const queryAudience = new URLSearchParams(location.search).get('audience');
+  const pathname = location.pathname || '/';
+  const audience = stateAudience || queryAudience || (pathname.startsWith('/praticien') ? 'practitioner' : 'patient');
+
+  const highlightClass = 'px-3 py-1 rounded-md bg-primary text-primary-foreground font-semibold shadow-md ring-1 ring-primary/30';
+  const defaultClass = 'hover:underline px-2';
+
   return (
     <header className="w-full sticky top-0 z-50">
       {/* Top thin dark bar */}
       <div className="bg-[#111111] text-white">
         <div className="container mx-auto flex h-8 items-center justify-end gap-4 text-xs">
-          <NavLink to="/praticien-recrutement" className={({ isActive }) => (isActive ? 'px-3 py-1 rounded-md bg-primary text-primary-foreground font-semibold shadow-md ring-1 ring-primary/30' : 'hover:underline px-2')}>{t('you_are_practitioner')}</NavLink>
-          <NavLink to="/" className={({ isActive }) => (isActive ? 'px-3 py-1 rounded-md bg-primary text-primary-foreground font-semibold shadow-md ring-1 ring-primary/30' : 'hover:underline px-2')}>{t('you_are_patient')}</NavLink>
+          <NavLink to="/praticien-recrutement" className={() => (audience === 'practitioner' ? highlightClass : defaultClass)}>{t('you_are_practitioner')}</NavLink>
+          <NavLink to="/" className={() => (audience === 'patient' ? highlightClass : defaultClass)}>{t('you_are_patient')}</NavLink>
         </div>
       </div>
 
@@ -53,7 +64,7 @@ export default function Header() {
             </div>
 
             <Button variant="ghost" asChild>
-              <Link to="/connexion">{t('login')}</Link>
+              <button onClick={() => navigate('/connexion', { state: { audience } })} className="text-sm">{t('login')}</button>
             </Button>
           </div>
         </div>
