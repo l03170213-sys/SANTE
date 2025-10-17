@@ -1,7 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = REPLACE_ENV.SUPABASE_URL;
-const supabaseAnonKey = REPLACE_ENV.SUPABASE_ANON_KEY;
+// Vite exposes env vars prefixed with VITE_ via import.meta.env
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: { persistSession: true },
