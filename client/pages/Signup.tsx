@@ -7,7 +7,8 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [fullName, setFullName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
   const [postal, setPostal] = useState('');
   const [birthdate, setBirthdate] = useState('');
