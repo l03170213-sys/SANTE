@@ -13,6 +13,13 @@ const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE, { auth: 
 const handler: Handler = async (event) => {
   try {
     if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method not allowed" };
+
+    // Verify secret header
+    const secretHeader = event.headers["x-admin-secret"] || event.headers["X-Admin-Secret"];
+    if (!process.env.ADMIN_FUNCTION_SECRET || !secretHeader || secretHeader !== process.env.ADMIN_FUNCTION_SECRET) {
+      return { statusCode: 401, body: "Unauthorized" };
+    }
+
     const body = JSON.parse(event.body || "{}");
     const { requestId, reason } = body;
     if (!requestId) return { statusCode: 400, body: "requestId is required" };
