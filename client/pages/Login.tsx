@@ -46,14 +46,21 @@ export default function Login() {
             <Link to="/mot-de-passe-oublie" className="text-sm text-primary underline">Mot de passe oublié</Link>
           </div>
         </form>
-        <div className="mt-4 flex items-center justify-between">
-          <div>
-            Pas encore de compte ? <Link to={`/inscription${audience ? `?audience=${audience}` : ''}`} className="text-primary underline font-medium">Créer un compte</Link>
+        {audience === 'practitioner' ? (
+          <div className="mt-4 rounded-md bg-yellow-50 border-l-4 border-yellow-400 p-4 text-sm">
+            <div className="font-medium">Accès praticien</div>
+            <div className="mt-1 text-sm text-muted-foreground">Les comptes praticiens ne peuvent pas être créés directement. Pour postuler, <Link to="/praticien-recrutement" className="text-primary underline">remplissez le formulaire de recrutement</Link>. Si votre dossier est accepté, un compte vous sera créé et vous recevrez un mot de passe provisoire par email.</div>
           </div>
-          <div>
-            <Link to="/" className="text-sm text-muted-foreground">Retour à l'accueil</Link>
+        ) : (
+          <div className="mt-4 flex items-center justify-between">
+            <div>
+              Pas encore de compte ? <Link to={`/inscription${audience ? `?audience=${audience}` : ''}`} className="text-primary underline font-medium">Créer un compte</Link>
+            </div>
+            <div>
+              <Link to="/" className="text-sm text-muted-foreground">Retour à l'accueil</Link>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
