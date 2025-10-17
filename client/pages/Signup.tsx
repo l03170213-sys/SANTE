@@ -11,13 +11,29 @@ export default function Signup() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signUp({ email, password });
-    setLoading(false);
-    if (error) {
-      alert(error.message);
-    } else {
-      // redirect to homepage after signup
-      navigate('/');
+    try {
+      const result = await supabase.auth.signUp({ email, password } as any);
+      const error = (result as any).error;
+      const user = (result as any).data?.user ?? (result as any).user ?? null;
+
+      // attempt to create a profile server-side using service role
+      if (user?.id) {
+        await fetch('/api/profiles/create', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: user.id, email: user.email }) });
+      } else {
+        // fallback: create profile with email only (server can upsert by email if desired)
+        await fetch('/api/profiles/create', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
+      }
+
+      setLoading(false);
+
+      if (error) {
+        alert(error.message);
+      } else {
+        navigate('/');
+      }
+    } catch (err: any) {
+      setLoading(false);
+      alert(err?.message || 'Erreur lors de l\'inscription');
     }
   };
 
