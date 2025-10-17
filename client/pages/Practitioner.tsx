@@ -23,18 +23,8 @@ export default function Practitioner() {
 
   return (
     <div className="container mx-auto py-12">
-      <div className="mx-auto grid gap-8 md:grid-cols-2 items-center">
-        {/* Left: phone mockups */}
-        <div className="relative flex justify-center">
-          <div className="absolute -right-6 top-8 z-0 transform -rotate-6 rounded-3xl shadow-lg" style={{ width: 220, height: 420 }}>
-            <img src={BACK_IMG} alt="Disponibilités" className="h-full w-full rounded-3xl object-cover" />
-          </div>
-
-          <div className="relative z-10 rounded-3xl shadow-2xl" style={{ width: 300, height: 620 }}>
-            <img src={FRONT_IMG} alt="Téléconsultation" className="h-full w-full rounded-3xl object-cover" />
-          </div>
-        </div>
-
+      <div className="mx-auto grid gap-8 md:grid-cols-1 items-center">
+        {/* Removed left image mockups as requested */}
         {/* Right: details panel */}
         <div>
           <div className="flex items-center gap-4">
