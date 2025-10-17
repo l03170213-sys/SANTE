@@ -16,6 +16,7 @@ import SelectAudience from "./pages/SelectAudience";
 import PractitionerRecruit from "./pages/PractitionerRecruit";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Admin from "./pages/Admin";
 import Layout from "@/components/site/Layout";
 import Placeholder from "@/pages/Placeholder";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
