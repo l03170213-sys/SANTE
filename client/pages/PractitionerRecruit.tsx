@@ -16,18 +16,47 @@ export default function PractitionerRecruit() {
 
   const onChange = (k: string, v: any) => setForm((f) => ({ ...f, [k]: v }));
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // basic validation
     if (!form.name || !form.email) {
       alert("Merci de renseigner au minimum le nom et l'email.");
       return;
     }
-    setSubmitted(true);
-    // simulate send then navigate or show success
-    setTimeout(() => {
-      navigate("/", { replace: true });
-    }, 1500);
+
+    try {
+      // try to insert a practitioner request into Supabase
+      // requires a table named 'practitioner_requests' with suitable columns
+      // If the table doesn't exist, the error will be shown to the user.
+      // Import supabase lazily to avoid circular imports
+      const { supabase } = await import("@/lib/supabase");
+      const { error } = await supabase.from("practitioner_requests").insert([
+        {
+          name: form.name,
+          email: form.email,
+          postal: form.postal,
+          phone: form.phone,
+          specialty: form.specialty,
+          practice_type: form.practiceType,
+          order_number: form.orderNumber,
+          created_at: new Date().toISOString(),
+        },
+      ]);
+
+      if (error) {
+        console.error("Supabase insert error:", error);
+        alert("Impossible d'envoyer la demande. Vérifie que la table practitioner_requests existe dans Supabase. Message: " + error.message);
+        return;
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        navigate("/", { replace: true });
+      }, 1500);
+    } catch (err: any) {
+      console.error(err);
+      alert("Erreur lors de l'envoi. Vérifie la configuration Supabase.");
+    }
   };
 
   return (
