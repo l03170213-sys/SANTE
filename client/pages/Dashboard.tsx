@@ -9,13 +9,18 @@ export default function Dashboard() {
 
   const role = profile?.role || 'patient';
 
+  const rawName = (profile?.full_name || user?.user_metadata?.full_name || user?.email || 'Utilisateur') as string;
+  const formatName = (name: string) => name.split(' ').map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
+  const displayName = formatName(rawName);
+  const firstName = displayName.split(' ')[0];
+
   return (
     <div className="container mx-auto py-12">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <div className="col-span-2 space-y-6">
           <div className="rounded-2xl border bg-white p-6 shadow-sm">
-            <h1 className="text-2xl font-semibold">Bienvenue, {profile?.full_name ?? user?.email ?? 'Utilisateur'}</h1>
-            <p className="mt-2 text-sm text-muted-foreground">{role === 'practitioner' ? "Voici votre tableau de bord praticien" : "Voici votre tableau de bord patient"}</p>
+            <h1 className="text-2xl font-semibold">Bonjour, {firstName}</h1>
+            <p className="mt-2 text-sm text-muted-foreground">{displayName} · {role === 'practitioner' ? 'Praticien' : 'Patient'}</p>
 
             {/* Quick actions */}
             <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
