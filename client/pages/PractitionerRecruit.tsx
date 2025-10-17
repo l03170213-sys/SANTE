@@ -61,6 +61,11 @@ export default function PractitionerRecruit() {
           </div>
 
           <div>
+            <div className="flex items-center justify-between mb-4">
+              <div />
+              <a href="/connexion" className="rounded-md border px-3 py-2 text-sm">Connexion</a>
+            </div>
+
             <div className="rounded-2xl border bg-white p-6 shadow-md">
               {!submitted ? (
                 <form onSubmit={onSubmit} className="space-y-4">
