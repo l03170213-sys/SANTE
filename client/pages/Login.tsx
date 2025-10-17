@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -37,6 +37,9 @@ export default function Login() {
             <button type="submit" disabled={loading} className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">{loading? 'Chargement...' : 'Se connecter'}</button>
           </div>
         </form>
+        <div className="mt-4 rounded-md bg-primary/5 p-4 text-sm text-center">
+          Pas encore de compte ? <Link to="/inscription" className="text-primary underline font-medium">Créer un compte</Link>
+        </div>
       </div>
     </div>
   );
