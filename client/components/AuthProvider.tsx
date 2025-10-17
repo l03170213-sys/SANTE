@@ -53,14 +53,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await refresh();
     })();
 
-    const { data: sub } = supabase.auth.onAuthStateChange((_, session) => {
+    const { data } = supabase.auth.onAuthStateChange((_, session) => {
       const u = session?.user ?? null;
       setUser(u);
       loadProfile(u?.id);
     });
 
+    const subscription = (data as any)?.subscription;
     return () => {
-      sub?.subscription.unsubscribe();
+      subscription?.unsubscribe?.();
     };
   }, []);
 
