@@ -22,9 +22,13 @@ export default function AdminPage() {
 
   async function approve(requestId: number) {
     const tempPassword = Math.random().toString(36).slice(-8);
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+      "x-admin-secret": (import.meta.env.VITE_ADMIN_FUNCTION_SECRET as string) || "",
+    };
     const res = await fetch("/.netlify/functions/admin-approve", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers,
       body: JSON.stringify({ requestId, tempPassword }),
     });
     const j = await res.json();
@@ -33,9 +37,13 @@ export default function AdminPage() {
   }
 
   async function rejectRequest(requestId: number, reason?: string) {
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+      "x-admin-secret": (import.meta.env.VITE_ADMIN_FUNCTION_SECRET as string) || "",
+    };
     const res = await fetch("/.netlify/functions/admin-reject", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers,
       body: JSON.stringify({ requestId, reason }),
     });
     if (res.ok) fetchRequests();
