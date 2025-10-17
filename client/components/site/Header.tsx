@@ -43,8 +43,17 @@ export default function Header() {
           </form>
 
           <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <button onClick={() => setLang('fr')} aria-pressed={lang==='fr'} className={`rounded px-2 py-1 text-sm ${lang==='fr' ? 'bg-primary/10 ring-1 ring-primary' : ''}`}>
+                FR
+              </button>
+              <button onClick={() => setLang('wo')} aria-pressed={lang==='wo'} className={`rounded px-2 py-1 text-sm ${lang==='wo' ? 'bg-primary/10 ring-1 ring-primary' : ''}`}>
+                WO
+              </button>
+            </div>
+
             <Button variant="ghost" asChild>
-              <Link to="/connexion">Connexion</Link>
+              <Link to="/connexion">{t('login')}</Link>
             </Button>
           </div>
         </div>
