@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import React from "react";
@@ -13,7 +13,7 @@ export default function Header() {
       <div className="bg-[#111111] text-white">
         <div className="container mx-auto flex h-8 items-center justify-end gap-4 text-xs">
           <a href="#" className="hover:underline px-2">Vous êtes praticien</a>
-          <a href="#" className="hover:underline px-2">Vous êtes patient</a>
+          <NavLink to="/" className={({ isActive }) => (isActive ? 'underline px-2 font-semibold' : 'hover:underline px-2')}>Vous êtes patient</NavLink>
         </div>
       </div>
 
