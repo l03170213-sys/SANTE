@@ -28,7 +28,7 @@ export default function Login() {
   return (
     <div className="container mx-auto py-12">
       <div className="mx-auto max-w-md">
-        <h2 className="text-2xl font-semibold mb-4">Se connecter</h2>
+        <h2 className="text-2xl font-semibold mb-4">Se connecter {audience === 'practitioner' ? "(Praticien)" : ''}</h2>
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
             <label className="sr-only">Email</label>
