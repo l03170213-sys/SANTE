@@ -32,8 +32,8 @@ export default function SearchFlow() {
   };
 
   const onNext = () => {
-    // proceed to booking or next step; pass motives
-    navigate('/booking', { state: { motives: selected.length ? selected : [otherText || 'Autre'] } });
+    // go to results page with selected motives
+    navigate('/search/results', { state: { motives: selected.length ? selected : [otherText || 'Autre'] } });
   };
 
   return (
