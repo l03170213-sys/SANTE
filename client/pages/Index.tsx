@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Video, CalendarDays, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import DoctorsSection from "@/components/doctors/DoctorsSection";
+import CommitmentsAndHow from "@/components/home/CommitmentsAndHow";
 
 
 export default function Index() {
