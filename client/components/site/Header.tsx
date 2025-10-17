@@ -33,8 +33,8 @@ export default function Header() {
                 id="site-search"
                 placeholder="Rechercher un Généraliste, Psychiatre, Pédiatre..."
                 className="w-full rounded-full border border-input bg-white py-3 pl-10 pr-4 text-sm shadow-sm placeholder:text-muted-foreground"
-                onFocus={() => navigate('/search')}
-                onClick={() => navigate('/search')}
+                onFocus={() => navigate('/search/audience')}
+                onClick={() => navigate('/search/audience')}
                 readOnly
               />
             </div>
