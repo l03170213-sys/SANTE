@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
-import React, { useState } from "react";
-import SearchOverlay from "./SearchOverlay";
+import React from "react";
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   return (
     <header className="w-full sticky top-0 z-50">
       {/* Top thin dark bar */}
