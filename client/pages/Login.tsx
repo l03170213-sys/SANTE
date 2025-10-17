@@ -20,7 +20,8 @@ export default function Login() {
     if (error) {
       alert(error.message);
     } else {
-      navigate('/');
+      if (audience === 'practitioner') navigate('/praticien');
+      else navigate('/');
     }
   };
 
