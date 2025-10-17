@@ -46,8 +46,13 @@ export default function Login() {
             <Link to="/mot-de-passe-oublie" className="text-sm text-primary underline">Mot de passe oublié</Link>
           </div>
         </form>
-        <div className="mt-4 rounded-md bg-primary/5 p-4 text-sm text-center">
-          Pas encore de compte ? <Link to="/inscription" className="text-primary underline font-medium">Créer un compte</Link>
+        <div className="mt-4 flex items-center justify-between">
+          <div>
+            Pas encore de compte ? <Link to={`/inscription${audience ? `?audience=${audience}` : ''}`} className="text-primary underline font-medium">Créer un compte</Link>
+          </div>
+          <div>
+            <Link to="/" className="text-sm text-muted-foreground">Retour à l'accueil</Link>
+          </div>
         </div>
       </div>
     </div>
