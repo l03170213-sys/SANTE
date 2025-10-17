@@ -80,7 +80,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
 export const useAuthContext = () => {
   const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuthContext must be used within AuthProvider");
+  if (!ctx) {
+    // Defensive fallback for HMR or unexpected render order: return a safe default
+    return {
+      user: null,
+      profile: null,
+      loading: true,
+      refresh: async () => {},
+    } as AuthContextValue;
+  }
   return ctx;
 };
 
