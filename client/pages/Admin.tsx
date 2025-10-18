@@ -130,6 +130,53 @@ export default function AdminPage() {
         </div>
       </div>
 
+      <div className="mb-6 rounded-lg border p-4 bg-white">
+        <h2 className="text-lg font-medium mb-2">Ajouter un administrateur</h2>
+        <div className="flex gap-2">
+          <input
+            className="border rounded px-3 py-2 flex-1"
+            placeholder="Adresse email"
+            value={adminEmail}
+            onChange={(e) => setAdminEmail(e.target.value)}
+            type="email"
+          />
+          <button
+            className="px-4 py-2 bg-blue-600 text-white rounded"
+            onClick={async () => {
+              if (!adminEmail) return alert('Email requis');
+              if (!confirm(`Ajouter ${adminEmail} comme administrateur ?`)) return;
+              setAddingAdmin(true);
+              try {
+                const headers: Record<string, string> = {
+                  "Content-Type": "application/json",
+                  "x-admin-secret": (import.meta.env.VITE_ADMIN_FUNCTION_SECRET as string) || "",
+                };
+                const res = await fetch('/.netlify/functions/admin-add', {
+                  method: 'POST',
+                  headers,
+                  body: JSON.stringify({ email: adminEmail }),
+                });
+                const j = await res.json();
+                if (res.ok) {
+                  alert('Administrateur ajouté et email envoyé');
+                  setAdminEmail('');
+                  fetchRequests();
+                } else {
+                  alert(j.error || JSON.stringify(j));
+                }
+              } catch (err) {
+                console.error(err);
+                alert('Erreur lors de l\'ajout');
+              }
+              setAddingAdmin(false);
+            }}
+            disabled={addingAdmin}
+          >
+            {addingAdmin ? 'Envoi...' : 'Ajouter'}
+          </button>
+        </div>
+      </div>
+
       <RequestsTable
         requests={requests}
         loading={loading}
