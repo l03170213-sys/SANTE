@@ -14,7 +14,18 @@ export default function AdminPage() {
 
   async function fetchRequests() {
     setLoading(true);
-    const res = await fetch("/.netlify/functions/list-practitioner-requests");
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+      "x-admin-secret": (import.meta.env.VITE_ADMIN_FUNCTION_SECRET as string) || "",
+    };
+    const res = await fetch("/.netlify/functions/list-practitioner-requests", { headers });
+    if (!res.ok) {
+      // show empty list on unauthorized or error
+      console.error('Failed to fetch practitioner requests', res.status);
+      setRequests([]);
+      setLoading(false);
+      return;
+    }
     const data = await res.json();
     setRequests(data || []);
     setLoading(false);
