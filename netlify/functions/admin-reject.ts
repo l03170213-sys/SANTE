@@ -59,7 +59,8 @@ const handler: Handler = async (event) => {
       await fetch(`https://api.mailgun.net/v3/${mgDomain}/messages`, {
         method: "POST",
         headers: {
-          Authorization: "Basic " + Buffer.from(`api:${mgApiKey}`).toString("base64"),
+          Authorization:
+            "Basic " + Buffer.from(`api:${mgApiKey}`).toString("base64"),
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: bodyForm.toString(),
