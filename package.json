@@ -25,7 +25,8 @@
     "express": "^5.1.0",
     "zod": "^3.25.76",
     "@sendgrid/mail": "^7.7.0",
-    "node-fetch": "^3.4.1"
+    "node-fetch": "^3.3.2"
+
   },
   "devDependencies": {
     "@hookform/resolvers": "^5.2.1",
