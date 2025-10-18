@@ -95,8 +95,30 @@ const handler: Handler = async (event) => {
       .from("admins")
       .upsert({ email }, { onConflict: "email" });
 
-    // send email with temp password
-    if (SENDGRID_API_KEY) {
+    // send email with temp password: Mailgun preferred, fallback to SendGrid
+    if (process.env.MAILGUN_API_KEY && process.env.MAILGUN_DOMAIN) {
+      const mgApiKey = process.env.MAILGUN_API_KEY;
+      const mgDomain = process.env.MAILGUN_DOMAIN;
+      const bodyForm = new URLSearchParams();
+      bodyForm.append("from", EMAIL_FROM);
+      bodyForm.append("to", email);
+      bodyForm.append("subject", "Accès administrateur");
+      bodyForm.append(
+        "html",
+        `<p>Bonjour,</p>
+<p>Vous avez été ajouté en tant qu'administrateur. Utilisez ce mot de passe provisoire pour vous connecter : <strong>${tempPassword}</strong></p>
+<p>Lors de votre première connexion, vous pourrez changer le mot de passe ici : <a href="${APP_URL}/change-password">${APP_URL}/change-password</a></p>
+<p>Merci.</p>`,
+      );
+      await fetch(`https://api.mailgun.net/v3/${mgDomain}/messages`, {
+        method: "POST",
+        headers: {
+          Authorization: "Basic " + Buffer.from(`api:${mgApiKey}`).toString("base64"),
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: bodyForm.toString(),
+      });
+    } else if (SENDGRID_API_KEY) {
       const msg = {
         to: email,
         from: EMAIL_FROM,
