@@ -120,8 +120,31 @@ const handler: Handler = async (event) => {
       .update({ processed: true })
       .eq("id", requestId);
 
-    // Send email via SendGrid
-    if (SENDGRID_API_KEY) {
+    // Send email via Mailgun if configured, otherwise fallback to SendGrid
+    if (process.env.MAILGUN_API_KEY && process.env.MAILGUN_DOMAIN) {
+      const mgApiKey = process.env.MAILGUN_API_KEY;
+      const mgDomain = process.env.MAILGUN_DOMAIN;
+      const bodyForm = new URLSearchParams();
+      bodyForm.append("from", EMAIL_FROM);
+      bodyForm.append("to", email);
+      bodyForm.append("subject", "Votre compte praticien a été validé");
+      bodyForm.append(
+        "html",
+        `<p>Bonjour ${fullName},</p>
+<p>Votre compte praticien a été validé par l'équipe. Vous pouvez vous connecter avec ce mot de passe provisoire : <strong>${passwordToSet}</strong></p>
+<p>Lors de votre première connexion, vous devrez changer votre mot de passe ici : <a href="${APP_URL}/change-password">${APP_URL}/change-password</a></p>
+<p>Merci,</p>
+<p>L'équipe</p>`,
+      );
+      await fetch(`https://api.mailgun.net/v3/${mgDomain}/messages`, {
+        method: "POST",
+        headers: {
+          Authorization: "Basic " + Buffer.from(`api:${mgApiKey}`).toString("base64"),
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: bodyForm.toString(),
+      });
+    } else if (SENDGRID_API_KEY) {
       const msg = {
         to: email,
         from: EMAIL_FROM,
