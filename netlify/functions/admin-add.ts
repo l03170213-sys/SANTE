@@ -90,8 +90,8 @@ const handler: Handler = async (event) => {
       approved: true,
     });
 
-    // insert into admins table if not exists
-    await supabaseAdmin.from("admins").insert({ email }).onConflict('email').ignore();
+    // insert into admins table (upsert by email to avoid duplicates)
+    await supabaseAdmin.from("admins").upsert({ email }, { onConflict: 'email' });
 
     // send email with temp password
     if (SENDGRID_API_KEY) {
