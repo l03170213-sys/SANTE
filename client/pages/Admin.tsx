@@ -8,6 +8,8 @@ export default function AdminPage() {
   const [requests, setRequests] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [processingAll, setProcessingAll] = useState(false);
+  const [adminEmail, setAdminEmail] = useState("");
+  const [addingAdmin, setAddingAdmin] = useState(false);
 
   useEffect(() => {
     fetchRequests();
