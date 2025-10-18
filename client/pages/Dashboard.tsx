@@ -196,20 +196,6 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="mt-4 rounded-2xl border bg-white p-4 text-sm shadow-sm">
-            <div className="font-medium">Support</div>
-            <div className="mt-2 text-muted-foreground">
-              Contacte le support pour toute question.
-            </div>
-            <div className="mt-4">
-              <a
-                href="mailto:contact@example.com"
-                className="text-primary underline"
-              >
-                Envoyer un email
-              </a>
-            </div>
-          </div>
         </aside>
       </div>
     </div>
