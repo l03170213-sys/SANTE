@@ -91,7 +91,9 @@ const handler: Handler = async (event) => {
     });
 
     // insert into admins table (upsert by email to avoid duplicates)
-    await supabaseAdmin.from("admins").upsert({ email }, { onConflict: 'email' });
+    await supabaseAdmin
+      .from("admins")
+      .upsert({ email }, { onConflict: "email" });
 
     // send email with temp password
     if (SENDGRID_API_KEY) {
@@ -110,7 +112,10 @@ const handler: Handler = async (event) => {
     return { statusCode: 200, body: JSON.stringify({ ok: true, userId }) };
   } catch (err: any) {
     console.error(err);
-    return { statusCode: 500, body: JSON.stringify({ error: err.message || err }) };
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: err.message || err }),
+    };
   }
 };
 

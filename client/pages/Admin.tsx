@@ -19,12 +19,15 @@ export default function AdminPage() {
     setLoading(true);
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
-      "x-admin-secret": (import.meta.env.VITE_ADMIN_FUNCTION_SECRET as string) || "",
+      "x-admin-secret":
+        (import.meta.env.VITE_ADMIN_FUNCTION_SECRET as string) || "",
     };
-    const res = await fetch("/.netlify/functions/list-practitioner-requests", { headers });
+    const res = await fetch("/.netlify/functions/list-practitioner-requests", {
+      headers,
+    });
     if (!res.ok) {
       // show empty list on unauthorized or error
-      console.error('Failed to fetch practitioner requests', res.status);
+      console.error("Failed to fetch practitioner requests", res.status);
       setRequests([]);
       setLoading(false);
       return;
@@ -57,7 +60,8 @@ export default function AdminPage() {
     setProcessingAll(true);
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
-      "x-admin-secret": (import.meta.env.VITE_ADMIN_FUNCTION_SECRET as string) || "",
+      "x-admin-secret":
+        (import.meta.env.VITE_ADMIN_FUNCTION_SECRET as string) || "",
     };
 
     const promises = requests.map((r) => {
@@ -84,9 +88,13 @@ export default function AdminPage() {
     setProcessingAll(false);
     await fetchRequests();
 
-    if (failed.length === 0) alert(`Validation terminée — ${success}/${requests.length} réussies`);
-    else alert(`Terminé. ${success} réussies, ${failed.length} échouées. Voir console pour détails.`);
-    if (failed.length) console.error('Bulk approve failures', failed);
+    if (failed.length === 0)
+      alert(`Validation terminée — ${success}/${requests.length} réussies`);
+    else
+      alert(
+        `Terminé. ${success} réussies, ${failed.length} échouées. Voir console pour détails.`,
+      );
+    if (failed.length) console.error("Bulk approve failures", failed);
   }
 
   async function rejectRequest(requestId: number, reason?: string) {
@@ -125,7 +133,9 @@ export default function AdminPage() {
             onClick={approveAll}
             disabled={processingAll || loading || (requests || []).length === 0}
           >
-            {processingAll ? "Validation en cours..." : `Valider tout (${(requests || []).length})`}
+            {processingAll
+              ? "Validation en cours..."
+              : `Valider tout (${(requests || []).length})`}
           </button>
         </div>
       </div>
@@ -143,36 +153,39 @@ export default function AdminPage() {
           <button
             className="px-4 py-2 bg-blue-600 text-white rounded"
             onClick={async () => {
-              if (!adminEmail) return alert('Email requis');
-              if (!confirm(`Ajouter ${adminEmail} comme administrateur ?`)) return;
+              if (!adminEmail) return alert("Email requis");
+              if (!confirm(`Ajouter ${adminEmail} comme administrateur ?`))
+                return;
               setAddingAdmin(true);
               try {
                 const headers: Record<string, string> = {
                   "Content-Type": "application/json",
-                  "x-admin-secret": (import.meta.env.VITE_ADMIN_FUNCTION_SECRET as string) || "",
+                  "x-admin-secret":
+                    (import.meta.env.VITE_ADMIN_FUNCTION_SECRET as string) ||
+                    "",
                 };
-                const res = await fetch('/.netlify/functions/admin-add', {
-                  method: 'POST',
+                const res = await fetch("/.netlify/functions/admin-add", {
+                  method: "POST",
                   headers,
                   body: JSON.stringify({ email: adminEmail }),
                 });
                 const j = await res.json();
                 if (res.ok) {
-                  alert('Administrateur ajouté et email envoyé');
-                  setAdminEmail('');
+                  alert("Administrateur ajouté et email envoyé");
+                  setAdminEmail("");
                   fetchRequests();
                 } else {
                   alert(j.error || JSON.stringify(j));
                 }
               } catch (err) {
                 console.error(err);
-                alert('Erreur lors de l\'ajout');
+                alert("Erreur lors de l'ajout");
               }
               setAddingAdmin(false);
             }}
             disabled={addingAdmin}
           >
-            {addingAdmin ? 'Envoi...' : 'Ajouter'}
+            {addingAdmin ? "Envoi..." : "Ajouter"}
           </button>
         </div>
       </div>
