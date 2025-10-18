@@ -45,7 +45,26 @@ const handler: Handler = async (event) => {
       .update({ processed: true, processed_reason: reason || null })
       .eq("id", requestId);
 
-    if (SENDGRID_API_KEY) {
+    if (process.env.MAILGUN_API_KEY && process.env.MAILGUN_DOMAIN) {
+      const mgApiKey = process.env.MAILGUN_API_KEY;
+      const mgDomain = process.env.MAILGUN_DOMAIN;
+      const bodyForm = new URLSearchParams();
+      bodyForm.append("from", EMAIL_FROM);
+      bodyForm.append("to", req.email);
+      bodyForm.append("subject", "Votre candidature praticien a été rejetée");
+      bodyForm.append(
+        "html",
+        `<p>Bonjour ${req.name || ""},</p><p>Votre candidature a été rejetée. Raison : ${reason || "non spécifiée"}.</p>`,
+      );
+      await fetch(`https://api.mailgun.net/v3/${mgDomain}/messages`, {
+        method: "POST",
+        headers: {
+          Authorization: "Basic " + Buffer.from(`api:${mgApiKey}`).toString("base64"),
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: bodyForm.toString(),
+      });
+    } else if (SENDGRID_API_KEY) {
       await sgMail.send({
         to: req.email,
         from: EMAIL_FROM,
